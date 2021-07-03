@@ -46,6 +46,7 @@ group :development do
   gem 'annotate'
   gem 'bcrypt'
   gem 'jquery-rails'
+  gem 'rack-livereload'
 end
 
 group :test do
