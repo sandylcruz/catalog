@@ -4,9 +4,12 @@ require_relative 'boot'
 
 require 'rails/all'
 
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+
 
 module LuckyCatalog
   class Application < Rails::Application
@@ -20,5 +23,9 @@ module LuckyCatalog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+      initializer(:remove_action_mailbox_and_activestorage_routes, after: :add_routing_paths) { |app|
+      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}
+      app.routes_reloader.paths.delete_if {|path| path =~ /actionmailbox/ }
+    }
   end
 end
