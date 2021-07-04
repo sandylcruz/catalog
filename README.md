@@ -14,10 +14,10 @@ Continuous integration was implemented to ensure that Rubocop and ESLint best pr
 
 ## Development
 
-To run guard livereload, go to root and run "bundle exec guard"
+To run Rails server, go to root and run `rails s`
 
-To run Rails server, go to root and run "rails s"
+To run webpack, go to root and run `./bin/webpack-dev-server`.
 
-To run eslint, go to root and run "yarn eslint"
+To run eslint, go to root and run `yarn eslint`
 
 To run rubocop autofix, go to root and run "rubocop -A"

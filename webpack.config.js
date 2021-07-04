@@ -4,7 +4,9 @@ module.exports = {
   entry: './frontend/luckyCatalog.js',
   output: {
     path: path.resolve(__dirname),
-    filename: '../app/assets/javascripts/bundle.js',
+    // filename: './app/assets/javascripts/bundle.js',
+
+    filename: './app/javascript/bundle.js',
   },
   module: {
     rules: [
