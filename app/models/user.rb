@@ -16,16 +16,11 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64(10)
   end
 
-  def reset_session_token!
+  def reset_session_token!; end
 
-  end
+  def password=(password); end
 
-  def password=(password)
-  end
+  def is_password?; end
 
-  def is_password?
-  end
-
-  def find_by_credentials(username, password)
-  end
+  def find_by_credentials(username, password); end
 end

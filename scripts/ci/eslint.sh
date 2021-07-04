@@ -3,7 +3,7 @@ set -e
 
 echo "About to perform eslint run"
 
-cd ./frontend
+cd ./app/javascript/src
 
 yarn eslint
 
