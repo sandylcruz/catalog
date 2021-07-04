@@ -3,7 +3,7 @@
 
 </p>
 <p align="center">
-HappyCatalog is a todo application built on Ruby on Rails, React/Redux, and PostgreSQL.
+LuckyCatalog is a todo application built on Ruby on Rails, React/Redux, and PostgreSQL.
 </p>
 
 ## Features and Implementation
