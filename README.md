@@ -20,4 +20,4 @@ To run webpack, go to root and run `./bin/webpack-dev-server`.
 
 To run eslint, go to root and run `yarn eslint`
 
-To run rubocop autofix, go to root and run "rubocop -A"
+To run rubocop autofix, go to root and run `rubocop -A`
