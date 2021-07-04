@@ -7,11 +7,13 @@ require 'securerandom'
 class User < ApplicationRecord
   attr_reader :password_digest
 
-  validates :session_token, presence: true, uniqueness: true
-  validates :password_digest, presence: true, uniqueness: true
+  validates :session_token, uniqueness: true
+  validates :password_digest, uniqueness: true
+
+  after_initialize :ensure_session_token
 
   def generate_session_token
-    SecureRandom.urlsafe_base64
+    SecureRandom.urlsafe_base64(10)
   end
 
   def reset_session_token!
@@ -34,5 +36,11 @@ class User < ApplicationRecord
     return nil unless user
 
     user.is_password?(password) ? user : nil
+  end
+
+  private
+
+  def ensure_session_token
+    self.session_token ||= SecureRandom.urlsafe_base64
   end
 end
