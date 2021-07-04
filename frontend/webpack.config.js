@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
-  entry: 'index.tsx',
+  entry: path.resolve(__dirname, './index.js'),
   output: {
     path: path.resolve(__dirname),
     filename: '../app/assets/javascripts/bundle.js',

@@ -1,6 +1,10 @@
 {
   "name": "LuckyCatalog",
   "private": true,
+  "scripts": {
+    "build": "webpack --mode=production --config ./frontend/webpack.config.js",
+    "eslint": "eslint ./frontend"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
