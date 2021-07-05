@@ -3,8 +3,6 @@
 module Api
   # This is the UsersController
   class UsersController < ApplicationController
-    skip_before_action :verify_authenticity_token
-
     def create
       @user = User.new(user_params)
 
@@ -29,7 +27,7 @@ module Api
     private
 
     def user_params
-      params.require(:user).permit(:username, :password_digest, :session_token)
+      params.permit(:username, :password_digest, :session_token)
     end
   end
 end
