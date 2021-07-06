@@ -27,7 +27,7 @@ module Api
       @todo = Todo.find_by(id: params[:id])
 
       if @todo
-        @todo.destroy
+        @todo.destroy!
       else
         render json: ['No todo found'], status: :not_found
       end
