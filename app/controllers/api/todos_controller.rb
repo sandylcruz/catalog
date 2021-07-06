@@ -1,30 +1,38 @@
 # frozen_string_literal: true
 
-# This is the todos controller
-class TodosController < ApplicationController
-  def create
-    @todo = Todo.create(todo_params)
+module Api
+  # This is the todos controller
+  class TodosController < ApplicationController
+    def create
+      @todo = Todo.new(todo_params)
 
-    if @todo.save
-      render :show
-    else
-      render json: @todo.errors.full_messages, status: 422
+      if @todo.save
+        render :show
+      else
+        render json: @todo.errors.full_messages, status: 422
+      end
     end
-  end
 
-  def show
-    @todo.find_by(id: params[:id])
+    def show
+      @todo.find_by(id: params[:id])
 
-    nil if @todo
-  end
+      render json: ['No todo found'] if @todo.nil?
+    end
 
-  def destroy
-    # TODO: = Todo.find_by(id: params[:id])
-  end
+    def destroy
+      @todo = Todo.find_by(id: params[:id])
 
-  private
+      if @todo
+        delete_todo(@todo.id)
+      else
+        render json: ['No todo found']
+      end
+    end
 
-  def todos_params
-    params.permit(:title, :body, :done)
+    private
+
+    def todos_params
+      params.permit(:title, :body, :done)
+    end
   end
 end

@@ -10,6 +10,11 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :session_token, presence: true, uniqueness: true
 
+  has_many :todos,
+           class_name: 'Todo',
+           foreign_key: :user_id,
+           primary_key: :id
+
   attr_reader :password
 
   after_initialize :ensure_session_token
