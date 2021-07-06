@@ -36,7 +36,7 @@ module Api
     private
 
     def todos_params
-      params.permit(:title, :body, :done)
+      params.permit(:title, :body, :done, :user_id)
     end
   end
 end

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Todo, type: :model do
   let(:valid_todo) do
-    Todo.new(title: 'First todo', body: 'This is the first todo', done: false, user_id: 1)
+    Todo.new(title: 'First todo', body: 'This is the first todo', user_id: 1)
   end
 
   describe 'Validations' do
