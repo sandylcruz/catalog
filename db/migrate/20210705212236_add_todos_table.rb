@@ -7,6 +7,7 @@ class AddTodosTable < ActiveRecord::Migration[6.1]
       t.string 'title', null: false
       t.string 'body', null: false
       t.boolean 'done', null: false
+      t.integer 'user_id', null: false
     end
 
     add_index :todos, :title

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_212236) do
     t.string "title", null: false
     t.string "body", null: false
     t.boolean "done", null: false
+    t.integer "user_id", null: false
     t.index ["title"], name: "index_todos_on_title"
   end
 

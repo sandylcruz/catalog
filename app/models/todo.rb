@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
+# This is the todo class
 class Todo < ApplicationRecord
-  validates :title, null: false
-  validates :body, null: false
-  validates :done, null: false
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :done, presence: true
+  validates :user_id, presence: true
 
   belongs_to :user,
              class_name: 'User',
