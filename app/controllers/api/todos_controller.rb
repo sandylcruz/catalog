@@ -16,16 +16,20 @@ module Api
     def show
       @todo.find_by(id: params[:id])
 
-      render json: ['No todo found'] if @todo.nil?
+      if @todo
+        render :show
+      else
+        render json: ['No todo found']
+      end
     end
 
     def destroy
       @todo = Todo.find_by(id: params[:id])
 
       if @todo
-        delete_todo(@todo.id)
+        @todo.destroy
       else
-        render json: ['No todo found']
+        render json: ['No todo found'], status: :not_found
       end
     end
 
