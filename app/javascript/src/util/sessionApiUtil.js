@@ -23,7 +23,7 @@ export const login = React.memo(
   (user) =>
     new Promise((resolve, reject) => {
       ajax({
-        type: 'GET',
+        type: 'POST',
         url: 'api/session',
         data: user,
         success: (userResponse) => {
