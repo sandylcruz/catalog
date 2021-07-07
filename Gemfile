@@ -48,10 +48,8 @@ group :development do
   gem 'bcrypt'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'guard-livereload'
   gem 'jquery-rails'
   gem 'pry-rails'
-  gem 'rack-livereload'
   gem 'spring'
 end
 
