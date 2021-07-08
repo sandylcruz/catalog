@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
   width: 160px;
   height: 45px;
   text-transform: uppercase;
@@ -25,5 +25,4 @@ export const Button = styled.button`
   &:active {
   }
 `;
-
-export const Input = styled.input``;
+export default Button;

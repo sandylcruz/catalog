@@ -1,13 +1,20 @@
-import React from 'react';
-// import { useDispatch } from 'react-redux';
-import Signup from './Signup';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { signup } from '../actions/sessionActions';
+import SignupForm from './SignupForm';
 
 const SignupContainer = React.memo(() => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  console.log('in signup container');
+  const processForm = useCallback(
+    (user) => {
+      dispatch(signup(user));
+    },
+    [dispatch]
+  );
 
-  return <Signup />;
+  return <SignupForm processForm={processForm} />;
 });
 
 export default SignupContainer;

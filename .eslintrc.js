@@ -13,5 +13,6 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/jsx-filename-extension': 'off',
+    'react/prop-types': 0,
   },
-}
+};
