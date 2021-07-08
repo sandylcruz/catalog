@@ -1,9 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+
+import App from './App';
+import rootReducer from './reducers/rootReducer';
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <h3> React from index.tsx</h3>,
-    document.body.appendChild(document.createElement('div'))
-  );
+  let store = createStore(rootReducer);
+
+  const root = document.getElementById('root');
+  ReactDOM.render(<App store={store} />, root);
 });

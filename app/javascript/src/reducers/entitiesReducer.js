@@ -1,3 +1,3 @@
-const entitiesReducer = () => {};
+// const entitiesReducer = combineReducers({})
 
-export default entitiesReducer;
+// export default entitiesReducer;
