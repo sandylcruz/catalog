@@ -6,7 +6,12 @@ import App from './App';
 import rootReducer from './reducers/rootReducer';
 
 document.addEventListener('DOMContentLoaded', () => {
-  let store = createStore(rootReducer);
+  // let store = createStore(rootReducer);
+
+  const store = createStore(
+    rootReducer /* preloadedState, */,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
   const root = document.getElementById('root');
   ReactDOM.render(<App store={store} />, root);
