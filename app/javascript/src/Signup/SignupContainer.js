@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useDispatch } from 'react-redux';
-// import Signup from './Signup';
+import Signup from './Signup';
 
 const SignupContainer = React.memo(() => {
   // const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const SignupContainer = React.memo(() => {
 
   return (
     <div>
-      <h1>Signup Form</h1>
+      <Signup />
     </div>
   );
 });
