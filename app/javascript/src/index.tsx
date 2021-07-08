@@ -1,17 +1,21 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { compose } from 'redux';
 import { createStore } from 'redux';
 
 import App from './App';
 import rootReducer from './reducers/rootReducer';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // let store = createStore(rootReducer);
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
 
-  const store = createStore(
-    rootReducer /* preloadedState, */,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const store = createStore(rootReducer, composeEnhancers());
 
   const root = document.getElementById('root');
   ReactDOM.render(<App store={store} />, root);
