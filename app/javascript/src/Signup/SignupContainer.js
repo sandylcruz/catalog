@@ -7,11 +7,7 @@ const SignupContainer = React.memo(() => {
 
   console.log('in signup container');
 
-  return (
-    <div>
-      <Signup />
-    </div>
-  );
+  return <Signup />;
 });
 
 export default SignupContainer;

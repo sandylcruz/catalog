@@ -11,12 +11,10 @@ const App = React.memo(({ store }) => {
 
   return (
     <Provider store={store}>
-      <div>
-        <GlobalStyle />
-        <BrowserRouter>
-          <Route path="/" component={SignupContainer} />
-        </BrowserRouter>
-      </div>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Route path="/" component={SignupContainer} />
+      </BrowserRouter>
     </Provider>
   );
 });

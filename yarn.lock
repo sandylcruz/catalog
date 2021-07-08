@@ -1342,6 +1342,11 @@ accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
+access-it@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/access-it/-/access-it-1.0.9.tgz#9091045b32031dc0aee51d18002f643bb9b85f0e"
+  integrity sha512-VxrseN4SGqxrvkS1RQuGpdTqXSsIVL1FLZ95HPOb9aQpJTJfKZCx1zXppWBF1i3+scW7rg3XxywBF0qXID5iSA==
+
 acorn-jsx@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.1.tgz#fc8661e11b7ac1539c47dbfea2e72b3af34d267b"
