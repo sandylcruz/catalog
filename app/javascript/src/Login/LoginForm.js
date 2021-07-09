@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import * as React from 'react';
+import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '../components/Button';
@@ -24,10 +25,8 @@ const LoginFormContainer = styled.div`
   border-radius: 5px;
   padding-top: 60px;
   padding-bottom: 100px;
-  background: linear-gradient(350deg, #565c7c, #f7f8fa);
   margin: 150px;
   padding: 50px;
-  // width: 300px;
 `;
 
 const StyledForm = styled.form`
