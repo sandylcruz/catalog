@@ -75,15 +75,18 @@ const Signup = React.memo(({ processForm }) => {
     setPassword(event.currentTarget.value);
   }, []);
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
 
-    const user = {
-      username,
-      password,
-    };
-    processForm(user);
-  }, []);
+      const user = {
+        username,
+        password,
+      };
+      processForm(user);
+    },
+    [username, password]
+  );
 
   return (
     <SignupFormDiv>
