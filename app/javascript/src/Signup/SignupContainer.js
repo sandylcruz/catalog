@@ -9,7 +9,9 @@ const SignupContainer = React.memo(() => {
 
   const processForm = useCallback(
     (user) => {
-      dispatch(signup(user));
+      const returnValue = signup(user);
+      console.log(returnValue);
+      dispatch(returnValue);
     },
     [dispatch]
   );

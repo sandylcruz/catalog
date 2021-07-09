@@ -11,12 +11,12 @@ const Bottom = styled.div`
 `;
 
 const H3 = styled.h3`
-  color: grey;
+  // color: grey;
   font-weight: normal;
 `;
 
 const Label = styled.label`
-  color: grey;
+  // color: grey;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -34,14 +34,17 @@ const SignupFormDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid green;
 `;
 
 const SignupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
-  margin: 50px;
+  border: 1px solid #565c7c;
+  border-radius: 5px;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  background: linear-gradient(350deg, #565c7c, #f7f8fa);
+  margin: 150px;
   padding: 50px;
 `;
 
@@ -97,7 +100,6 @@ const Signup = React.memo(({ processForm }) => {
                 <Input
                   name="username"
                   onChange={updateUsername}
-                  // placeholder="Username "
                   type="text"
                   value={username}
                 />
@@ -109,7 +111,6 @@ const Signup = React.memo(({ processForm }) => {
               <Input
                 name="password"
                 onChange={updatePassword}
-                // placeholder="Password"
                 type="password"
                 value={password}
               />
