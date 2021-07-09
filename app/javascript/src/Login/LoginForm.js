@@ -9,6 +9,11 @@ import Label from '../components/Label';
 
 const H3 = styled.h3`
   font-weight: normal;
+  color: grey;
+`;
+
+const LineDiv = styled.div`
+  display: flex;
 `;
 
 const LoginFormDiv = styled.div`
@@ -69,16 +74,18 @@ const LoginForm = React.memo(({ processForm }) => {
           <H3>Please sign in</H3>
         </FormTop>
         <StyledForm onSubmit={handleSubmit}>
-          <Label>
-            {' '}
-            Username
-            <Input
-              name="username"
-              type="text"
-              onChange={updateUsername}
-              value={username}
-            />
-          </Label>
+          <LineDiv>
+            <Label>
+              {' '}
+              Username
+              <Input
+                name="username"
+                type="text"
+                onChange={updateUsername}
+                value={username}
+              />
+            </Label>
+          </LineDiv>
 
           <Label>
             {' '}

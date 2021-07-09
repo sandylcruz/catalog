@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Label = styled.label`
-  // color: grey;
+  color: grey;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;

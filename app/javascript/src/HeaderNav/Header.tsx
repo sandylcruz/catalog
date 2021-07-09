@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { SignupContainer } from '../Signup/SignupContainer';
 
 const A = styled.a`
   text-decoration: none;

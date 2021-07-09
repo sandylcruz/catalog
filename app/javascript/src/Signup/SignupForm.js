@@ -14,6 +14,7 @@ const Bottom = styled.div`
 `;
 
 const H3 = styled.h3`
+  color: grey;
   font-weight: normal;
 `;
 
@@ -81,6 +82,7 @@ const Signup = React.memo(({ processForm }) => {
           <StyledForm onSubmit={handleSubmit}>
             <LineDiv>
               <Label>
+                {' '}
                 Username
                 <Input
                   name="username"
@@ -92,6 +94,7 @@ const Signup = React.memo(({ processForm }) => {
             </LineDiv>
 
             <Label>
+              {' '}
               Password
               <Input
                 name="password"
