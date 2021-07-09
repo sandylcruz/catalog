@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  width: 160px;
+  width: 210px;
   height: 45px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
@@ -17,12 +17,12 @@ const Button = styled.button`
   border: none;
 
   &:hover {
-    box-shadow: 0px 15px 20px #e8e8ff;
+    box-shadow: 0px 15px 20px #babae5;
     transform: translateY(-4px);
   }
 
   &:active {
-    box-shadow: 0px 15px 20px #e8e8ff;
+    box-shadow: 0px 15px 20px #b196d6;
     transform: translateY(-4px);
   }
 `;

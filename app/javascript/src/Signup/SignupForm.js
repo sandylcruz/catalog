@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Label from '../components/Label';
-import FormTop from '../components/FormTop';
+// import FormTop from '../components/FormTop';
 
 const Bottom = styled.div`
   margin: 10px;
@@ -13,9 +13,18 @@ const Bottom = styled.div`
   display: flex;
 `;
 
+const H1 = styled.h1`
+  color: white;
+  margin-top: 75px;
+  font-size: 45px;
+  text-align: center;
+  font-family: 'roboto';
+`;
+
 const H3 = styled.h3`
-  color: grey;
-  font-weight: normal;
+  color: white;
+  text-align: center;
+  font-family: 'roboto';
 `;
 
 const LineDiv = styled.div`
@@ -31,14 +40,18 @@ const SignupFormDiv = styled.div`
 `;
 
 const SignupContainer = styled.div`
+  background: linear-gradient(45deg, #8ca6db, #b993d6);
   display: flex;
   flex-direction: column;
-  border: 1px solid #565c7c;
+  align-items: center;
+  border: 1px solid white;
   border-radius: 5px;
   padding-top: 60px;
   padding-bottom: 100px;
   margin: 150px;
   padding: 50px;
+  width: 325px;
+  height: 500px;
 `;
 
 const StyledForm = styled.form`
@@ -75,10 +88,9 @@ const Signup = React.memo(({ processForm }) => {
   return (
     <SignupFormDiv>
       <SignupContainer>
-        <FormTop>
-          <h1>Signup </h1>
-          <H3>Welcome, Create Your Account</H3>
-        </FormTop>
+        <H1>Hello there! </H1>
+        <H3>Create Your Account</H3>
+
         <Bottom>
           <StyledForm onSubmit={handleSubmit}>
             <LineDiv>
