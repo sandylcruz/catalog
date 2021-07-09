@@ -15,6 +15,8 @@
     "@rails/webpacker": "5.4.0",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
+    "@zendeskgarden/react-modals": "^8.38.0",
+    "@zendeskgarden/react-theming": "^8.38.0",
     "access-it": "^1.0.9",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "jquery": "^3.6.0",

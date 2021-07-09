@@ -40,7 +40,8 @@ const SignupFormDiv = styled.div`
 `;
 
 const SignupContainer = styled.div`
-  background: linear-gradient(45deg, #8ca6db, #b993d6);
+  background: linear-gradient(180deg, #8ca6db, #b993d6);
+  opacity: 0.85;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,6 +53,7 @@ const SignupContainer = styled.div`
   padding: 50px;
   width: 325px;
   height: 500px;
+  box-shadow: 0px 15px 35px #b196d6;
 `;
 
 const StyledForm = styled.form`

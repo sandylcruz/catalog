@@ -19,7 +19,9 @@ const H1 = styled.h1`
 const HeaderContainer = styled.div`
   border: transparent;
   height: 75px;
-  background-color: #43af9b;
+  background: linear-gradient(-120deg, #26e289, #43af9b);
+
+  // background-color: #43af9b;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,7 +45,6 @@ const Header = () => {
   const handleLogoutClick = useCallback(
     (event) => {
       event.preventDefault();
-      console.log('in handle logout click');
       dispatch(logout());
       history.push('/');
     },
@@ -60,6 +61,8 @@ const Header = () => {
   ) : (
     <div>
       <p>You are not logged in</p>
+      <A href="/#/signup">Signup</A>
+      <A href="/#/login">Login</A>
     </div>
   );
 
@@ -68,11 +71,7 @@ const Header = () => {
       <A href="/">
         <H1>LuckyCatalog</H1>
       </A>
-      <LinkList>
-        {display}
-        <A href="/#/signup">Signup</A>
-        <A href="/#/login">Login</A>
-      </LinkList>
+      <LinkList>{display}</LinkList>
     </HeaderContainer>
   );
 };
