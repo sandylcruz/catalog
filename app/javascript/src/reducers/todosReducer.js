@@ -1,15 +1,15 @@
-import RECEIVE_TODO from '../actions/todosActions';
+import { RECEIVE_TODO, RECEIVE_TODOS } from '../actions/todosActions';
 
-const defaultState = {
-  todos: [],
-};
+const defaultState = {};
 
 const todosReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_TODO:
-      return state;
+      return { ...state, id: action.todo.id };
+    case RECEIVE_TODOS:
+      return { ...state, ids: action.todo.ids };
     default:
       return state;
   }

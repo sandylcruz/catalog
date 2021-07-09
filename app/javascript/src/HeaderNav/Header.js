@@ -40,8 +40,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(currentUser);
-
   const handleLogoutClick = useCallback(
     (event) => {
       event.preventDefault();
