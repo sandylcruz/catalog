@@ -6,6 +6,10 @@ import FormTop from '../components/FormTop';
 import Input from '../components/Input';
 import Label from '../components/Label';
 
+const H3 = styled.h3`
+  font-weight: normal;
+`;
+
 const LoginFormDiv = styled.div`
   text-align: center;
   display: flex;
@@ -23,7 +27,7 @@ const LoginFormContainer = styled.div`
   background: linear-gradient(350deg, #565c7c, #f7f8fa);
   margin: 150px;
   padding: 50px;
-  width: 300px;
+  // width: 300px;
 `;
 
 const StyledForm = styled.form`
@@ -59,38 +63,39 @@ const LoginForm = React.memo(({ processForm }) => {
   );
 
   return (
-    <LoginFormContainer>
-      <LoginFormDiv>
+    <LoginFormDiv>
+      <LoginFormContainer>
         <FormTop>
-          <StyledForm onSubmit={handleSubmit}>
-            <h1>Log in</h1>
-            <Label>
-              {' '}
-              Username
-              <Input
-                name="username"
-                type="text"
-                onChange={updateUsername}
-                value={username}
-              />
-            </Label>
-
-            <Label>
-              {' '}
-              Password
-              <Input
-                name="Password"
-                type="password"
-                onChange={updatePassword}
-                value={password}
-              />
-            </Label>
-
-            <Button>Login</Button>
-          </StyledForm>
+          <h1>Log in</h1>
+          <H3>Please sign in</H3>
         </FormTop>
-      </LoginFormDiv>
-    </LoginFormContainer>
+        <StyledForm onSubmit={handleSubmit}>
+          <Label>
+            {' '}
+            Username
+            <Input
+              name="username"
+              type="text"
+              onChange={updateUsername}
+              value={username}
+            />
+          </Label>
+
+          <Label>
+            {' '}
+            Password
+            <Input
+              name="Password"
+              type="password"
+              onChange={updatePassword}
+              value={password}
+            />
+          </Label>
+
+          <Button>Login</Button>
+        </StyledForm>
+      </LoginFormContainer>
+    </LoginFormDiv>
   );
 });
 

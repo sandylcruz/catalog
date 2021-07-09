@@ -10,6 +10,10 @@ html, body, span, div, h1, h2, h3, h4, p, a, label, link, img, ol, ul, li, heade
   font-family: 'helvetica neue';
 }
 
+// body {
+//   background-color: #43AF9B;
+// }
+
 h1 {
   font-size: 40px;
   font-weight: bold;

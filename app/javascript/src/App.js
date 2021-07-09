@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import GlobalStyle from './GlobalStyle.ts';
+import Header from './HeaderNav/Header.tsx';
 import LoginFormContainer from './Login/LoginFormContainer';
 import SignupContainer from './Signup/SignupContainer';
 
@@ -13,9 +14,10 @@ const App = React.memo(({ store }) => {
   return (
     <Provider store={store}>
       <GlobalStyle />
+      <Header />
       <HashRouter>
         <Switch>
-          <Route path="/" exact component={SignupContainer} />
+          <Route exact path="/" component={SignupContainer} />
           <Route path="/login" component={LoginFormContainer} />
           <Route path="/signup" component={SignupContainer} />
         </Switch>
