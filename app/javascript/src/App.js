@@ -12,9 +12,10 @@ const App = React.memo(({ store }) => {
 
   return (
     <Provider store={store}>
-      <GlobalStyle />
-      <Header />
       <HashRouter>
+        <GlobalStyle />
+        <Header />
+
         <Switch>
           <Route exact path="/" component={SignupContainer} />
           <Route path="/login" component={LoginFormContainer} />

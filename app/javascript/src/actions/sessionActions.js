@@ -18,16 +18,15 @@ export const receiveErrors = (errors) => ({
   errors,
 });
 
-export const login = (user) => (dispatch) => {
+export const login = (user) => (dispatch) =>
   SessionApiUtil.login(user).then((currentUser) =>
     dispatch(receiveCurrentUser(currentUser))
   );
-};
-export const logout = () => (dispatch) => {
-  SessionApiUtil.logout().then(() => dispatch(logoutCurrentUser));
-};
-export const signup = (user) => (dispatch) => {
+
+export const logout = () => (dispatch) =>
+  SessionApiUtil.logout().then(() => dispatch(logoutCurrentUser()));
+
+export const signup = (user) => (dispatch) =>
   SessionApiUtil.signup(user).then((currentUser) =>
     dispatch(receiveCurrentUser(currentUser))
   );
-};

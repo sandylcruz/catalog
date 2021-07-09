@@ -61,7 +61,6 @@ const LoginForm = React.memo(({ processForm }) => {
         password,
       };
       processForm(user);
-      console.log(user);
     },
     [username, password]
   );
