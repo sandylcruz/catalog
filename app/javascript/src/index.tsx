@@ -14,7 +14,25 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
   const root = document.getElementById('root');
+  let store;
+
+  if (window.currentUser) {
+    const { currentUser } = window;
+    const { id } = currentUser;
+
+    const preloadedState = {
+      entities: {
+        users: {
+          [id]: currentUser,
+        },
+      },
+      session: { id },
+    };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
+
   ReactDOM.render(<App store={store} />, root);
 });
