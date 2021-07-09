@@ -4,7 +4,7 @@ module Api
   # This is the SessionsController
   class SessionsController < ApplicationController
     def create
-      @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+      @user = User.find_by_credentials(params[:username], params[:password])
 
       if @user.nil?
         render json: ['Invalid username or password'], status: 401

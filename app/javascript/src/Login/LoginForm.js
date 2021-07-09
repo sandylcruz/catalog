@@ -1,33 +1,19 @@
 import React, { useCallback, useState } from 'react';
-
 import styled from 'styled-components';
+
 import Button from '../components/Button';
+import FormTop from '../components/FormTop';
 import Input from '../components/Input';
 import Label from '../components/Label';
-import FormTop from '../components/FormTop';
 
-const Bottom = styled.div`
-  margin: 10px;
-  padding: 10px;
-  display: flex;
-`;
-
-const H3 = styled.h3`
-  font-weight: normal;
-`;
-
-const LineDiv = styled.div`
-  display: flex;
-`;
-
-const SignupFormDiv = styled.div`
+const LoginFormDiv = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const SignupContainer = styled.div`
+const LoginFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #565c7c;
@@ -37,6 +23,7 @@ const SignupContainer = styled.div`
   background: linear-gradient(350deg, #565c7c, #f7f8fa);
   margin: 150px;
   padding: 50px;
+  width: 300px;
 `;
 
 const StyledForm = styled.form`
@@ -45,16 +32,16 @@ const StyledForm = styled.form`
   align-items: center;
 `;
 
-const Signup = React.memo(({ processForm }) => {
+const LoginForm = React.memo(({ processForm }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const updateUsername = useCallback((event) => {
-    setUsername(event.currentTarget.value);
-  }, []);
-
   const updatePassword = useCallback((event) => {
     setPassword(event.currentTarget.value);
+  }, []);
+
+  const updateUsername = useCallback((event) => {
+    setUsername(event.currentTarget.value);
   }, []);
 
   const handleSubmit = useCallback(
@@ -66,47 +53,45 @@ const Signup = React.memo(({ processForm }) => {
         password,
       };
       processForm(user);
+      console.log(user);
     },
     [username, password]
   );
 
   return (
-    <SignupFormDiv>
-      <SignupContainer>
+    <LoginFormContainer>
+      <LoginFormDiv>
         <FormTop>
-          <h1>Signup </h1>
-          <H3>Welcome, Create Your Account</H3>
-        </FormTop>
-        <Bottom>
           <StyledForm onSubmit={handleSubmit}>
-            <LineDiv>
-              <Label>
-                Username
-                <Input
-                  name="username"
-                  onChange={updateUsername}
-                  type="text"
-                  value={username}
-                />
-              </Label>
-            </LineDiv>
+            <h1>Log in</h1>
+            <Label>
+              {' '}
+              Username
+              <Input
+                name="username"
+                type="text"
+                onChange={updateUsername}
+                value={username}
+              />
+            </Label>
 
             <Label>
+              {' '}
               Password
               <Input
-                name="password"
-                onChange={updatePassword}
+                name="Password"
                 type="password"
+                onChange={updatePassword}
                 value={password}
               />
             </Label>
 
-            <Button type="submit">Create Account</Button>
+            <Button>Login</Button>
           </StyledForm>
-        </Bottom>
-      </SignupContainer>
-    </SignupFormDiv>
+        </FormTop>
+      </LoginFormDiv>
+    </LoginFormContainer>
   );
 });
 
-export default Signup;
+export default LoginForm;

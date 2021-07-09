@@ -1,10 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { compose } from 'redux';
-// import { createStore } from 'redux';
 
 import App from './App';
-import rootReducer from './reducers/rootReducer';
 import configureStore from './store/store';
 
 declare global {
