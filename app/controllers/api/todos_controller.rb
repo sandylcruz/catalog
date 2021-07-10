@@ -23,6 +23,17 @@ module Api
       end
     end
 
+    def update
+      @todo = Todo.find_by(id: params[:id])
+
+      if @todo
+        @todo.update_attributes(todo_params)
+        render json: ['Successfully updated']
+      else
+        render json: ['No todo found'], status: :not_found
+      end
+    end
+
     def destroy
       @todo = Todo.find_by(id: params[:id])
 

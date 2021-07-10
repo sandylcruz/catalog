@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Home from './Home.svg';
+// import Logo from './Logo.svg';
 import { logout } from '../actions/sessionActions';
 import { selectCurrentUser } from '../reducers/selectors';
 
@@ -29,6 +30,7 @@ const H1 = styled.h1`
   color: white;
   opacity: 0.75;
   font-size: 35px;
+  margin-right: 15px;
 
   &:hover {
     opacity: 1;
@@ -41,6 +43,8 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  box-shadow: red(5px 10px 8px);
+  z-index: 12;
 `;
 
 const Img = styled.img`
@@ -103,6 +107,7 @@ const Header = () => {
       </LeftDiv>
       <CenterDiv>
         <A href="/">
+          {/* <Img src={Logo} alt="logo" /> */}
           <H1>LuckyCatalog</H1>
         </A>
       </CenterDiv>
