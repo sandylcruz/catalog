@@ -20,7 +20,7 @@ const TodoInput = styled.input`
   }
 `;
 
-const TodoForm = ({ handleFormSubmission }) => {
+const TodoForm = ({ processForm }) => {
   const [title, setTitle] = useState('');
 
   const updateTitle = useCallback((event) => {
@@ -33,9 +33,11 @@ const TodoForm = ({ handleFormSubmission }) => {
 
       const todo = {
         title,
+        done: false,
       };
 
-      handleFormSubmission(todo);
+      processForm(todo);
+      console.log('in handlesubmit', todo);
     },
     [title]
   );
@@ -48,6 +50,7 @@ const TodoForm = ({ handleFormSubmission }) => {
         value={title}
         onChange={updateTitle}
       />
+      <button type="submit">Submit</button>
     </StyledForm>
   );
 };
