@@ -8,6 +8,8 @@ const defaultState = {
 };
 
 const sessionReducer = (state = defaultState, action) => {
+  Object.freeze(state);
+
   switch (action.type) {
     case RECEIVE_CURRENT_USER: {
       return { ...state, id: action.currentUser.id };

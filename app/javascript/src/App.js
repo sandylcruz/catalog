@@ -6,7 +6,7 @@ import GlobalStyle from './GlobalStyle.ts';
 import Header from './HeaderNav/Header';
 import LoginFormContainer from './Login/LoginFormContainer';
 import SignupContainer from './Signup/SignupContainer';
-import TodosContainer from './Todos/TodosContainer';
+import TodosContainer from './TodoForm/TodoFormContainer';
 
 const App = React.memo(({ store }) => {
   console.log('in app');
