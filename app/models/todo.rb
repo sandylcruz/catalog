@@ -3,7 +3,6 @@
 # This is the todo class
 class Todo < ApplicationRecord
   validates :title, presence: true
-  validates :body, presence: true
   validates :done, inclusion: [true, false]
   validates :user_id, presence: true
 

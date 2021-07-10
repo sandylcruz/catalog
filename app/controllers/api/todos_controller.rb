@@ -4,7 +4,7 @@ module Api
   # This is the todos controller
   class TodosController < ApplicationController
     def create
-      @todo = Todo.new(user_id: current_user.id, title: params[:title], body: params[:body], done: params[:done])
+      @todo = Todo.new(user_id: current_user.id, done: false, title: params[:title])
 
       if @todo.save
         render :show
@@ -47,7 +47,7 @@ module Api
     private
 
     def todos_params
-      params.permit(:title, :body, :done, :user_id)
+      params.permit(:title, :done, :user_id)
     end
   end
 end

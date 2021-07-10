@@ -2,15 +2,15 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const H1 = styled.h1`
-  font-size: 30px;
+const H3 = styled.h3`
+  font-size; 900px;
+  margin: 20px;
+  padding: 10px;
 `;
 
-const H2 = styled.h2`
-  font-size; 1000px;
-`;
 const SidebarContainer = styled.div`
   background-color: #f5f7f7;
+  // background-color: #DFE8E7;
   width: 180px;
   height: 100vh;
 `;
@@ -19,10 +19,10 @@ const Sidebar = () => {
   console.log('sidebar');
   return (
     <SidebarContainer>
-      <H1>Sidebar</H1>
-      <H2>Lists</H2>
-      <H2>Tags</H2>
-      <H2>Filters</H2>
+      <H3>Home</H3>
+      <H3>Lists</H3>
+      <H3>Tags</H3>
+      <H3>Filters</H3>
     </SidebarContainer>
   );
 };

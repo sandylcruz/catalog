@@ -1,8 +1,55 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useCallback, useState } from 'react';
 
-const TodoForm = () => {
-  console.log('hi');
-  return <h1>Todo Form</h1>;
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const TodoInput = styled.input`
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 10px;
+
+  &:hover {
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+  }
+`;
+
+const TodoForm = ({ handleFormSubmission }) => {
+  const [title, setTitle] = useState('');
+
+  const updateTitle = useCallback((event) => {
+    setTitle(event.currentTarget.value);
+  }, []);
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      const todo = {
+        title,
+      };
+
+      handleFormSubmission(todo);
+    },
+    [title]
+  );
+
+  return (
+    <StyledForm onClick={handleSubmit}>
+      <TodoInput
+        type="text"
+        placeholder="Write a new task..."
+        value={title}
+        onChange={updateTitle}
+      />
+    </StyledForm>
+  );
 };
 
 export default TodoForm;

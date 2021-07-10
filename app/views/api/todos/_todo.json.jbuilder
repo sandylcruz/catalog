@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.extract! todo, :title, :body, :user_id, :done
+json.extract! todo, :title, :user_id, :done
