@@ -30,4 +30,17 @@ export const updateTodo = (todo) =>
     });
   });
 
-// export const deleteTodo = (todo) => {};
+export const removeTodo = (todo) =>
+  new Promise((resolve, reject) => {
+    ajax({
+      type: 'DELETE',
+      url: 'api/todos',
+      data: todo,
+      success: () => {
+        resolve();
+      },
+      error: () => {
+        reject();
+      },
+    });
+  });
