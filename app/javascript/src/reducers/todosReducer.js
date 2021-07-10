@@ -2,6 +2,7 @@ import {
   RECEIVE_TODO,
   RECEIVE_TODOS,
   REMOVE_TODO,
+  UPDATE_TODO,
 } from '../actions/todoActions';
 
 const defaultState = {};
@@ -23,6 +24,10 @@ const todosReducer = (state = defaultState, action) => {
       return nextState;
     }
     case REMOVE_TODO: {
+      return nextState;
+    }
+
+    case UPDATE_TODO: {
       return nextState;
     }
     default:
