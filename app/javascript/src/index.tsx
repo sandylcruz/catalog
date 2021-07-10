@@ -1,6 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { compose } from 'redux';
+import {
+  receiveTodo,
+  receiveTodos,
+  removeTodo,
+} from './actions/todoActions.js';
 
 import App from './App';
 import configureStore from './store/store';
@@ -35,6 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.store = store;
+  window.actions = {
+    receiveTodo,
+    receiveTodos,
+  };
 
   ReactDOM.render(<App store={store} />, root);
 });

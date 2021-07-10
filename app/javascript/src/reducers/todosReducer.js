@@ -1,4 +1,4 @@
-import { RECEIVE_TODO, RECEIVE_TODOS } from '../actions/todosActions';
+import { RECEIVE_TODO, RECEIVE_TODOS } from '../actions/todoActions';
 
 const defaultState = {};
 
