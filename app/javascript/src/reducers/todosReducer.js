@@ -9,28 +9,31 @@ const defaultState = {};
 
 const todosReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  const nextState = {};
 
   switch (action.type) {
     case RECEIVE_TODO: {
-      console.log('in todos reducer', action.todo);
+      const nextState = { ...state };
       nextState[action.todo.id] = action.todo;
-      console.log('TODO ID:', action.todo.id);
-      console.log('todos reducer, next state:', nextState);
+
       return nextState;
     }
 
     case RECEIVE_TODOS: {
+      const nextState = { ...state };
+
       action.todos.forEach((todo) => {
         nextState[todo.id] = todo;
       });
       return nextState;
     }
     case REMOVE_TODO: {
+      const nextState = { ...state };
+
       return nextState;
     }
 
     case UPDATE_TODO: {
+      const nextState = { ...state };
       return nextState;
     }
     default:
