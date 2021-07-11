@@ -15,14 +15,13 @@ export const selectCurrentUser = createSelector(
 
 export const selectTodos = () => {};
 
-// export const selectUsersTodos = createSelector((state) => {
-//   (state) => {
-//     const currentUser = selectCurrentUser(state);
+export const selectUsersTodos = createSelector((state) => {
+  const currentUser = selectCurrentUser(state);
 
-//     if (!currentUser) {
-//       return null
-//     }
+  if (!currentUser) {
+    return null;
+  }
 
-//     return
-//   };
-// });
+  return 'select users todos';
+});
+

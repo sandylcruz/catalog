@@ -3,6 +3,8 @@
 module Api
   # This is the todos controller
   class TodosController < ApplicationController
+    before_action :ensure_logged_in
+
     def create
       @todo = Todo.new(user_id: current_user.id, done: false, title: params[:title])
 
@@ -11,6 +13,12 @@ module Api
       else
         render json: @todo.errors.full_messages, status: 422
       end
+    end
+
+    def index
+      @todos = current_user.todos
+
+      render :index
     end
 
     def show

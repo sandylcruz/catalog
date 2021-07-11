@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
+
+  def ensure_logged_in
+    render json: ['Please log in'], status: :unauthorized unless logged_in?
+  end
 end

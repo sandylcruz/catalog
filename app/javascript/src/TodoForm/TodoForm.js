@@ -1,7 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 import AddTodoButton from '../components/AddTodoButton';
+import { fetchTodos } from '../actions/todoActions';
+// import { selectUsersTodos } from '../reducers/selectors';
 
 const FormElements = styled.div`
   display: flex;
@@ -29,7 +32,11 @@ const TodoInput = styled.input`
 `;
 
 const TodoForm = ({ processForm }) => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
+  // const allTodos = selectUsersTodos();
+
+  // console.log(allTodos);
 
   const updateTitle = useCallback((event) => {
     setTitle(event.currentTarget.value);
@@ -48,6 +55,10 @@ const TodoForm = ({ processForm }) => {
     },
     [title]
   );
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, []);
 
   return (
     <StyledForm onSubmit={handleSubmit}>

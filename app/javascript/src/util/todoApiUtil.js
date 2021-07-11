@@ -44,3 +44,19 @@ export const removeTodo = (todo) =>
       },
     });
   });
+
+export const fetchTodos = () =>
+  new Promise((resolve, reject) => {
+    ajax({
+      type: 'GET',
+      url: 'api/todos',
+      success: (todos) => {
+        resolve(todos);
+      },
+      error: () => {
+        reject();
+      },
+    });
+  });
+
+// make thunk (takes in a function) to 1) make network request, 2) receive the todos
