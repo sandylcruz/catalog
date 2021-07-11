@@ -1,7 +1,13 @@
-/* eslint-disable camelcase */
 import React, { useCallback, useState } from 'react';
 
 import styled from 'styled-components';
+import AddTodoButton from '../components/AddTodoButton';
+
+const FormElements = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 
 const StyledForm = styled.form`
   padding: 20px;
@@ -14,9 +20,11 @@ const TodoInput = styled.input`
   border: 1px solid grey;
   padding: 10px;
   margin: 10px;
+  width: 300px;
+  transition: 0.2s;
 
   &:hover {
-    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    box-shadow: 0 0 0 4px #dbcaff;
   }
 `;
 
@@ -43,13 +51,15 @@ const TodoForm = ({ processForm }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <TodoInput
-        type="text"
-        placeholder="Write a new task..."
-        value={title}
-        onChange={updateTitle}
-      />
-      <button type="submit">Submit</button>
+      <FormElements>
+        <TodoInput
+          type="text"
+          placeholder="Write a new task..."
+          value={title}
+          onChange={updateTitle}
+        />
+        <AddTodoButton type="submit">✓</AddTodoButton>
+      </FormElements>
     </StyledForm>
   );
 };
