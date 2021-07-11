@@ -33,7 +33,6 @@ const TodoForm = ({ processForm }) => {
 
       const todo = {
         title,
-        done: false,
       };
 
       processForm(todo);
@@ -43,7 +42,7 @@ const TodoForm = ({ processForm }) => {
   );
 
   return (
-    <StyledForm onClick={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <TodoInput
         type="text"
         placeholder="Write a new task..."

@@ -28,6 +28,7 @@ export const updateTodo = (todo) => ({
 export const createTodo = (todo) => (dispatch) =>
   TodoApiUtil.createTodo(todo).then((newTodo) => {
     dispatch(receiveTodo(newTodo));
+    console.log('in todoActions', todo);
   });
 
 // export const deleteTodo = (todo) => (dispatch) =>

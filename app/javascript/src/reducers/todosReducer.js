@@ -13,7 +13,9 @@ const todosReducer = (state = defaultState, action) => {
 
   switch (action.type) {
     case RECEIVE_TODO: {
+      console.log('in todos reducer', action.todo);
       nextState[action.todo.id] = action.todo;
+      console.log('todos reducer, next state:', nextState);
       return nextState;
     }
 
