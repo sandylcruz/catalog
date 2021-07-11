@@ -15,6 +15,7 @@ const todosReducer = (state = defaultState, action) => {
     case RECEIVE_TODO: {
       console.log('in todos reducer', action.todo);
       nextState[action.todo.id] = action.todo;
+      console.log('TODO ID:', action.todo.id);
       console.log('todos reducer, next state:', nextState);
       return nextState;
     }
