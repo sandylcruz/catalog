@@ -44,17 +44,16 @@ const usersReducer = (state = defaultState, action) => {
     }
 
     case REMOVE_TODO: {
-      const { todo } = action;
-      const currentUserId = todo.user_id;
-      const currentUser = state[currentUserId];
+      const { todoId, userId } = action;
+
+      const currentUser = state[userId];
       const previousTodos = currentUser.todoIds;
-      console.log('in users reducer');
 
       return {
         ...state,
-        [currentUserId]: {
+        [userId]: {
           ...currentUser,
-          todoIds: previousTodos.filter((id) => id !== todo.id),
+          todoIds: previousTodos.filter((id) => id !== todoId),
         },
       };
     }

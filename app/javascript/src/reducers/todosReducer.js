@@ -31,7 +31,8 @@ const todosReducer = (state = defaultState, action) => {
 
       const nextState = { ...state };
       console.log('nextState:', nextState);
-      delete nextState[action.todo.id];
+
+      delete nextState[action.id];
       return nextState;
     }
 

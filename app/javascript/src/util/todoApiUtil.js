@@ -30,12 +30,11 @@ export const updateTodo = (todo) =>
     });
   });
 
-export const removeTodo = (todo) =>
+export const removeTodo = (todoId) =>
   new Promise((resolve, reject) => {
     ajax({
       type: 'DELETE',
-      url: `api/todos/${todo.id}`,
-      data: todo,
+      url: `api/todos/${todoId}`,
       success: () => {
         resolve();
       },

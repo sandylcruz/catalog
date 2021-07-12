@@ -78,9 +78,9 @@ const TodoItem = React.memo(({ todo }) => {
   const handleDeleteClick = useCallback(
     (event) => {
       event.preventDefault();
-      dispatch(deleteTodo(todo));
+      dispatch(deleteTodo(todo.id));
     },
-    [dispatch]
+    [dispatch, todo]
   );
 
   const handleEditClick = () => {};

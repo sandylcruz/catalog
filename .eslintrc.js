@@ -11,6 +11,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
+  extends: ['plugin:react-hooks/recommended'],
   rules: {
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 0,

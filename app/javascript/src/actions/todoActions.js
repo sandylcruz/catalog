@@ -15,9 +15,10 @@ export const receiveTodos = (todos) => ({
   todos,
 });
 
-export const removeTodo = (todo) => ({
+export const removeTodo = (todoId, userId) => ({
   type: REMOVE_TODO,
-  todo,
+  todoId,
+  userId,
 });
 
 export const updateTodo = (todo) => ({
@@ -30,11 +31,13 @@ export const createTodo = (todo) => (dispatch) =>
     dispatch(receiveTodo(newTodo));
   });
 
-export const deleteTodo = (todo) => (dispatch) =>
-  TodoApiUtil.removeTodo(todo).then((todoToDelete) => {
-    console.log('in todoActions');
-    dispatch(removeTodo(todoToDelete));
+export const deleteTodo = (todoId) => (dispatch, getState) => {
+  const currentUserId = getState().session.id;
+
+  return TodoApiUtil.removeTodo(todoId).then(() => {
+    dispatch(removeTodo(todoId, currentUserId));
   });
+};
 
 export const fetchTodos = () => (dispatch) =>
   TodoApiUtil.fetchTodos().then((todos) => {
