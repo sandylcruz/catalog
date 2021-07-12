@@ -1,25 +1,50 @@
-import React from 'react';
+// import React, { useCallback, useState } from 'react';
+// import { useDispatch } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
-const CheckboxInput = styled.input`
-  width: 20px;
-  height: 20px;
-  z-index: 4;
+import Checkbox from '../components/Checkbox';
+import Delete from './Delete.svg';
+import { deleteTodo } from '../actions/todoActions';
+import Edit from './Edit.svg';
+
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
+const IconImg = styled.img`
+  // background-color: blue;
+  z-index: 5;
 `;
 
 const Label = styled.label`
   border-radius: 5px;
   transition: 0.2s;
+  margin-right: 10px;
 
   &:hover {
     background-color: #add8e6;
   }
 `;
 
+const Left = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const TodoLi = styled.li``;
 
-const TodoItem = styled.div`
+const TodoDiv = styled.div`
   margin: 10px;
   padding: 10px;
   border: 1px solid #d3d3d3;
@@ -35,15 +60,51 @@ const TodoItem = styled.div`
   }
 `;
 
-const TodoShow = ({ todo }) => {
-  return (
-    <TodoItem>
-      <TodoLi key={todo.id}>{todo.title}</TodoLi>
-      <Label>
-        <CheckboxInput type="checkbox" />
-      </Label>
-    </TodoItem>
-  );
-};
+const TodoItem = React.memo(({ todo }) => {
+  const dispatch = useDispatch();
 
-export default TodoShow;
+  // const [done, setDone] = useState(false);
+
+  // const todoDoneStatus = false;
+
+  // const handleDoneToggle = useCallback((todo) => {
+  //   if (!todo.done) {
+  //     return todo.done;
+  //   } else {
+  //     return !todo.done;
+  //   }
+  // }, []);
+
+  const handleDeleteClick = useCallback(
+    (event) => {
+      event.preventDefault();
+      dispatch(deleteTodo(todo));
+    },
+    [dispatch]
+  );
+
+  const handleEditClick = () => {};
+
+  return (
+    <TodoDiv>
+      <Left>
+        <Label>
+          {/* <Checkbox type="checkbox" onClick={handleDoneToggle} value={done} /> */}
+          <Checkbox type="checkbox" />
+        </Label>
+        <TodoLi key={todo.id}>{todo.title}</TodoLi>
+      </Left>
+      <Right>
+        <Button onClick={handleEditClick}>
+          <IconImg src={Edit} alt="Edit button" />
+        </Button>
+
+        <Button onClick={handleDeleteClick}>
+          <IconImg src={Delete} alt="Delete button" />
+        </Button>
+      </Right>
+    </TodoDiv>
+  );
+});
+
+export default TodoItem;

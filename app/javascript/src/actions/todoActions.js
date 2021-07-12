@@ -32,6 +32,7 @@ export const createTodo = (todo) => (dispatch) =>
 
 export const deleteTodo = (todo) => (dispatch) =>
   TodoApiUtil.removeTodo(todo).then((todoToDelete) => {
+    console.log('in todoActions');
     dispatch(removeTodo(todoToDelete));
   });
 

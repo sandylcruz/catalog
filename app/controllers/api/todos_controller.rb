@@ -47,6 +47,7 @@ module Api
 
       if @todo
         @todo.destroy!
+        render json: ['Successfully deleted todo']
       else
         render json: ['No todo found'], status: :not_found
       end

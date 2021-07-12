@@ -34,7 +34,7 @@ export const removeTodo = (todo) =>
   new Promise((resolve, reject) => {
     ajax({
       type: 'DELETE',
-      url: 'api/todos',
+      url: `api/todos/${todo.id}`,
       data: todo,
       success: () => {
         resolve();
@@ -49,7 +49,7 @@ export const fetchTodos = () =>
   new Promise((resolve, reject) => {
     ajax({
       type: 'GET',
-      url: 'api/todos',
+      url: 'api/todos/',
       success: (todos) => {
         resolve(todos);
       },
@@ -58,5 +58,3 @@ export const fetchTodos = () =>
       },
     });
   });
-
-// make thunk (takes in a function) to 1) make network request, 2) receive the todos

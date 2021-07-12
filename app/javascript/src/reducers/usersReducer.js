@@ -1,5 +1,9 @@
 import { RECEIVE_CURRENT_USER } from '../actions/sessionActions';
-import { RECEIVE_TODO, RECEIVE_TODOS } from '../actions/todoActions';
+import {
+  RECEIVE_TODO,
+  RECEIVE_TODOS,
+  REMOVE_TODO,
+} from '../actions/todoActions';
 
 const defaultState = {};
 
@@ -35,6 +39,22 @@ const usersReducer = (state = defaultState, action) => {
         [currentUserId]: {
           ...currentUser,
           todoIds: [...previousTodos, todo.id],
+        },
+      };
+    }
+
+    case REMOVE_TODO: {
+      const { todo } = action;
+      const currentUserId = todo.user_id;
+      const currentUser = state[currentUserId];
+      const previousTodos = currentUser.todoIds;
+      console.log('in users reducer');
+
+      return {
+        ...state,
+        [currentUserId]: {
+          ...currentUser,
+          todoIds: previousTodos.filter((id) => id !== todo.id),
         },
       };
     }
