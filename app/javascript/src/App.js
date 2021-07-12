@@ -8,7 +8,7 @@ import Header from './HeaderNav/Header';
 import LoginFormContainer from './Login/LoginFormContainer';
 import Sidebar from './Sidebar/Sidebar';
 import SignupContainer from './Signup/SignupContainer';
-import TodosContainer from './TodoForm/TodoFormContainer';
+import TodosContainer from './Todos/Todos';
 
 const LowerComponents = styled.div`
   display: flex;
@@ -16,8 +16,6 @@ const LowerComponents = styled.div`
 `;
 
 const App = React.memo(({ store }) => {
-  console.log('in app');
-
   return (
     <Provider store={store}>
       <HashRouter>

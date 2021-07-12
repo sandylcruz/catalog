@@ -13,6 +13,11 @@ export const selectCurrentUser = createSelector(
   (currentUser) => currentUser
 );
 
+export const selectTodoById = createSelector(
+  (state) => state.entities.todos,
+  (todos, id) => todos[id]
+);
+
 export const selectUsersTodos = createSelector(
   selectCurrentUser,
   (state) => state.entities.todos,

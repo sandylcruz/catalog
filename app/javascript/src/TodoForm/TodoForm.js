@@ -20,7 +20,7 @@ const StyledForm = styled.form`
 
 const TodoInput = styled.input`
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid #d3d3d3;
   padding: 10px;
   margin: 10px;
   width: 300px;
@@ -31,17 +31,10 @@ const TodoInput = styled.input`
   }
 `;
 
-const Ul = styled.ul`
-  list-style: none;
-`;
-
-const TodoForm = ({ processForm, todos }) => {
+const TodoForm = ({ processForm }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-
-  const updateTitle = useCallback((event) => {
-    setTitle(event.currentTarget.value);
-  }, []);
+  // const isDone = Boolean(todo && todo.done);
 
   const handleDeleteClick = useCallback((event) => {
     event.preventDefault();
@@ -60,11 +53,13 @@ const TodoForm = ({ processForm, todos }) => {
     [title]
   );
 
+  const updateTitle = useCallback((event) => {
+    setTitle(event.currentTarget.value);
+  }, []);
+
   useEffect(() => {
     dispatch(fetchTodos());
   }, []);
-
-  console.log(todos);
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -80,11 +75,6 @@ const TodoForm = ({ processForm, todos }) => {
           X
         </DeleteTodoButton>
       </FormElements>
-      <Ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </Ul>
     </StyledForm>
   );
 };

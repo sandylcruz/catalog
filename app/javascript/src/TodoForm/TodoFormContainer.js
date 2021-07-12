@@ -1,22 +1,17 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 
-import { createTodo } from '../actions/todoActions';
-import { selectUsersTodos } from '../reducers/selectors';
+import TodoForm from './TodoForm';
 
-import Todos from './TodoForm';
-
-const TodoFormContainer = React.memo(() => {
-  const dispatch = useDispatch();
-
-  const todos = useSelector(selectUsersTodos);
-
-  const processForm = useCallback(
-    (todo) => dispatch(createTodo(todo)),
-    [dispatch]
-  );
-
-  return <Todos processForm={processForm} todos={todos} />;
-});
+const TodoFormContainer = React.memo(
+  ({ numberOfTodos, processForm, todos }) => {
+    return (
+      <TodoForm
+        numberOfTodos={numberOfTodos}
+        processForm={processForm}
+        todos={todos}
+      />
+    );
+  }
+);
 
 export default TodoFormContainer;

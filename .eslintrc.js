@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 0,
+    'arrow-body-style': 0,
   },
 };
