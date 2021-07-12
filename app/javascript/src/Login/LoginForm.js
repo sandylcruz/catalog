@@ -39,6 +39,7 @@ const LoginFormDiv = styled.div`
 `;
 
 const LoginFormContainer = styled.div`
+  background: linear-gradient(180deg, #8ca6db, #b993d6);
   opacity: 0.85;
   display: flex;
   flex-direction: column;

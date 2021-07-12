@@ -17,6 +17,7 @@ const SidebarContainer = styled.div`
 
 const Sidebar = () => {
   console.log('sidebar');
+
   return (
     <SidebarContainer>
       <H3>Home</H3>
