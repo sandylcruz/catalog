@@ -7,6 +7,10 @@ const CheckboxInput = styled.input`
   z-index: 4;
 `;
 
+const IndexContainer = styled.div`
+  padding: 20px;
+`;
+
 const Label = styled.label`
   border-radius: 5px;
   transition: 0.2s;
@@ -25,6 +29,11 @@ const TodoItem = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
 `;
 
 const TodoLi = styled.li``;
@@ -37,7 +46,7 @@ const TodoIndex = React.memo(({ numberOfTodos, todos }) => {
   const toggleDoneFlag = useCallback(() => {});
 
   return (
-    <div>
+    <IndexContainer>
       <div>{numberOfTodos} tasks left to do</div>
       <Ul>
         {todos.map((todo) => (
@@ -49,7 +58,7 @@ const TodoIndex = React.memo(({ numberOfTodos, todos }) => {
           </TodoItem>
         ))}
       </Ul>
-    </div>
+    </IndexContainer>
   );
 });
 
