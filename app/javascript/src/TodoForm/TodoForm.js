@@ -31,6 +31,10 @@ const TodoInput = styled.input`
   }
 `;
 
+const Ul = styled.ul`
+  list-style: none;
+`;
+
 const TodoForm = ({ processForm, todos }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
@@ -76,7 +80,11 @@ const TodoForm = ({ processForm, todos }) => {
           X
         </DeleteTodoButton>
       </FormElements>
-      {/* <div>{todos}</div> */}
+      <Ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.title}</li>
+        ))}
+      </Ul>
     </StyledForm>
   );
 };
