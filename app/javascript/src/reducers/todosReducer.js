@@ -36,8 +36,9 @@ const todosReducer = (state = defaultState, action) => {
       const nextState = { ...state };
       return nextState;
     }
-    default:
+    default: {
       return state;
+    }
   }
 };
 

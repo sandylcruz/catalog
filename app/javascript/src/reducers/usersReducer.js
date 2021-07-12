@@ -28,7 +28,7 @@ const usersReducer = (state = defaultState, action) => {
       const { todo } = action;
       const currentUserId = todo.user_id;
       const currentUser = state[currentUserId];
-      const previousTodos = currentUser.todos;
+      const previousTodos = currentUser.todoIds;
 
       return {
         ...state,
