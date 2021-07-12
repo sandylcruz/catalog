@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { createTodo } from '../actions/todoActions';
 import { selectUsersTodos } from '../reducers/selectors';
-import TodoFormContainer from '../TodoForm/TodoFormContainer';
+import TodoForm from '../TodoForm/TodoForm';
 import TodoIndex from '../TodoIndex/TodoIndex';
 
 const TodosContainer = styled.div``;
@@ -22,11 +22,7 @@ const Todos = React.memo(() => {
 
   return (
     <TodosContainer>
-      <TodoFormContainer
-        numberOfTodos={numberOfTodos}
-        processForm={processForm}
-        todos={todos}
-      />
+      <TodoForm processForm={processForm} />
       <TodoIndex numberOfTodos={numberOfTodos} todos={todos} />
     </TodosContainer>
   );

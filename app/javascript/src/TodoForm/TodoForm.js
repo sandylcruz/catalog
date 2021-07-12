@@ -34,7 +34,6 @@ const TodoInput = styled.input`
 const TodoForm = ({ processForm }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  // const isDone = Boolean(todo && todo.done);
 
   const handleDeleteClick = useCallback((event) => {
     event.preventDefault();
