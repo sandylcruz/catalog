@@ -16,7 +16,7 @@ const Label = styled.label`
   transition: 0.2s;
 
   &:hover {
-    background-color: #98f5da;
+    background-color: #add8e6;
   }
 `;
 
@@ -38,6 +38,11 @@ const TodoItem = styled.div`
 
 const TodoLi = styled.li``;
 
+const TodoNumber = styled.div`
+  padding-left: 10px;
+  font-size: 30px;
+`;
+
 const Ul = styled.ul`
   list-style: none;
 `;
@@ -47,7 +52,7 @@ const TodoIndex = React.memo(({ numberOfTodos, todos }) => {
 
   return (
     <IndexContainer>
-      <div>{numberOfTodos} tasks left to do</div>
+      <TodoNumber>{numberOfTodos} tasks left to do</TodoNumber>
       <Ul>
         {todos.map((todo) => (
           <TodoItem>
