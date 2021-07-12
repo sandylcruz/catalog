@@ -14,8 +14,8 @@ export const selectCurrentUser = createSelector(
 );
 
 export const selectTodoById = createSelector(
-  (state) => state.entities.todos,
-  (todos, id) => todos[id]
+  (state, id) => state.entities.todos[id],
+  (todo) => todo
 );
 
 export const selectUsersTodos = createSelector(
