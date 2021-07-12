@@ -19,11 +19,11 @@ const LoginFormContainer = React.memo(() => {
 
   // const processForm = useCallback(
   //   (event, user) => {
-  //     event.preventDefault();
-  //     dispatch(login(user));
+  //     // event.preventDefault();
+  //     dispatch(login(user))
   //     history.push('/');
   //   },
-  //   [dispatch]
+  //   [dispatch, history]
   // );
 
   return <LoginForm processForm={processForm} />;

@@ -14,5 +14,5 @@ User.create(username: 'stinky', password: 'password')
 
 Todo.create(title: 'Give Callie a bath', user: User.first, done: false)
 Todo.create(title: 'Second todo', user: User.last, done: false)
-Todo.create(title: 'Third todo', user: User.first, done: true)
-Todo.create(title: 'Give Callie a shower')
+Todo.create(title: 'Give Callie treats', user: User.first, done: true)
+Todo.create(title: 'Give Squeaky pets', user: User.first, done: false)
