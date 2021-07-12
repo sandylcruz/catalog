@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/sessionActions';
+import { RECEIVE_TODOS } from '../actions/todoActions';
 
 const defaultState = {};
 
@@ -8,7 +9,20 @@ const usersReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER: {
       const { currentUser } = action;
-      return { ...state, [currentUser.id]: currentUser };
+      return { ...state, [currentUser.id]: { ...currentUser, todoIds: [] } };
+    }
+    case RECEIVE_TODOS: {
+      const { todos } = action;
+      const currentUserId = todos[0].user_id;
+      const currentUser = state[currentUserId];
+
+      return {
+        ...state,
+        [currentUserId]: {
+          ...currentUser,
+          todoIds: todos.map((todo) => todo.id),
+        },
+      };
     }
     default: {
       return state;

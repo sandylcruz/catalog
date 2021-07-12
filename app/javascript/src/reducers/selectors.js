@@ -13,15 +13,14 @@ export const selectCurrentUser = createSelector(
   (currentUser) => currentUser
 );
 
-export const selectTodos = () => {};
+export const selectUsersTodos = createSelector(
+  selectCurrentUser,
+  (state) => state.entities.todos,
+  (currentUser, todos) => {
+    if (!currentUser) {
+      return [];
+    }
 
-export const selectUsersTodos = createSelector((state) => {
-  const currentUser = selectCurrentUser(state);
-
-  if (!currentUser) {
-    return null;
+    return currentUser.todoIds.map((todoId) => todos[todoId]);
   }
-
-  return 'select users todos';
-});
-
+);

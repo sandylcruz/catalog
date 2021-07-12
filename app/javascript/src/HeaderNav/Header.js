@@ -72,6 +72,7 @@ const RightDiv = styled.div`
 
 const Header = () => {
   const currentUser = useSelector(selectCurrentUser);
+
   const dispatch = useDispatch();
   const history = useHistory();
 

@@ -28,13 +28,12 @@ export const updateTodo = (todo) => ({
 export const createTodo = (todo) => (dispatch) =>
   TodoApiUtil.createTodo(todo).then((newTodo) => {
     dispatch(receiveTodo(newTodo));
-    console.log('in todoActions', todo);
   });
 
-// export const deleteTodo = (todo) => (dispatch) =>
-//   TodoApiUtil.removeTodo(todo).then((removedTodo) => {
-
-//   })
+export const deleteTodo = (todo) => (dispatch) =>
+  TodoApiUtil.removeTodo(todo).then((todoToDelete) => {
+    dispatch(removeTodo(todoToDelete));
+  });
 
 export const fetchTodos = () => (dispatch) =>
   TodoApiUtil.fetchTodos().then((todos) => {

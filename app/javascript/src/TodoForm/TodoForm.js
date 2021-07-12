@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 import AddTodoButton from '../components/AddTodoButton';
+import DeleteTodoButton from '../components/DeleteTodoButton';
 import { fetchTodos } from '../actions/todoActions';
-// import { selectUsersTodos } from '../reducers/selectors';
 
 const FormElements = styled.div`
   display: flex;
@@ -31,16 +31,17 @@ const TodoInput = styled.input`
   }
 `;
 
-const TodoForm = ({ processForm }) => {
+const TodoForm = ({ processForm, todos }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  // const allTodos = selectUsersTodos();
-
-  // console.log(allTodos);
 
   const updateTitle = useCallback((event) => {
     setTitle(event.currentTarget.value);
   }, []);
+
+  const handleDeleteClick = useCallback((event) => {
+    event.preventDefault();
+  });
 
   const handleSubmit = useCallback(
     (event) => {
@@ -51,7 +52,6 @@ const TodoForm = ({ processForm }) => {
       };
 
       processForm(todo);
-      console.log('in handlesubmit', todo);
     },
     [title]
   );
@@ -59,6 +59,8 @@ const TodoForm = ({ processForm }) => {
   useEffect(() => {
     dispatch(fetchTodos());
   }, []);
+
+  console.log(todos);
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -70,7 +72,11 @@ const TodoForm = ({ processForm }) => {
           onChange={updateTitle}
         />
         <AddTodoButton type="submit">✓</AddTodoButton>
+        <DeleteTodoButton type="button" onClick={handleDeleteClick}>
+          X
+        </DeleteTodoButton>
       </FormElements>
+      {/* <div>{todos}</div> */}
     </StyledForm>
   );
 };
