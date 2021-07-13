@@ -42,7 +42,10 @@ const Right = styled.div`
   flex-direction: row;
 `;
 
-const TodoLi = styled.li``;
+const TodoLi = styled.li`
+  color: purple;
+  text-decoration: line-through;
+`;
 
 const TodoDiv = styled.div`
   margin: 10px;
@@ -65,18 +68,19 @@ const TodoItem = React.memo(({ todo }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState('');
-
-  // const [done, setDone] = useState(false);
+  const [done, setDone] = useState(false);
 
   // const todoDoneStatus = false;
 
-  // const handleDoneToggle = useCallback((todo) => {
-  //   if (!todo.done) {
-  //     return todo.done;
-  //   } else {
-  //     return !todo.done;
-  //   }
-  // }, []);
+  const handleDoneToggle = useCallback((todo) => {
+    console.log('Todo:', todo);
+    if (!todo.done) {
+      return todo.done;
+    } else {
+      console.log(todo.done);
+      return !todo.done;
+    }
+  }, []);
 
   const handleDeleteClick = useCallback(
     (event) => {
@@ -95,6 +99,11 @@ const TodoItem = React.memo(({ todo }) => {
     [dispatch, todo.id]
   );
 
+  const updateDone = useCallback((event) => {
+    console.log(event.currentTarget.checked);
+    return event.currentTarget.checked;
+  }, []);
+
   const updateUpdatedTitle = useCallback((event) => {
     event.preventDefault();
     console.log(event.currentTarget.value);
@@ -107,8 +116,8 @@ const TodoItem = React.memo(({ todo }) => {
     <TodoDiv>
       <Left>
         <Label>
-          {/* <Checkbox type="checkbox" onClick={handleDoneToggle} value={done} /> */}
-          <Checkbox type="checkbox" />
+          <Checkbox type="checkbox" value={done} onChange={updateDone} />
+          {/* <Checkbox type="checkbox" /> */}
         </Label>
         <TodoLi key={todo.id} onChange={updateUpdatedTitle}>
           {todo.title}
