@@ -38,6 +38,7 @@ const TodoForm = ({ processForm }) => {
 
   const handleDeleteClick = useCallback((event) => {
     event.preventDefault();
+    setTitle('');
   }, []);
 
   const handleSubmit = useCallback(

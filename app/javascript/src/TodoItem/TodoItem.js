@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import Checkbox from '../components/Checkbox';
 import Delete from './Delete.svg';
-import { deleteTodo, updateTodo } from '../actions/todoActions';
+import { deleteTodo, editTodo, updateTodo } from '../actions/todoActions';
 import Edit from './Edit.svg';
 
 const Button = styled.button`
@@ -67,22 +67,16 @@ const TodoItem = React.memo(({ todo }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
-  console.log('isChecked', isChecked);
+  const [isChecked, setIsChecked] = useState(todo.done);
 
-  const handleDoneCheck = useCallback(
-    (todo) => {
-      console.log('Todo:', todo);
-      if (!todo.isChecked) {
-        dispatch(updateTodo(todo));
-        console.log('Todo checked:', isChecked);
-      } else if (!todo.isChecked) {
-        dispatch(updateTodo(todo));
-        console.log('Todo unchecked:', isChecked);
-      }
-    },
-    [dispatch]
-  );
+  const handleDoneCheck = useCallback(() => {
+    const updatedTodo = {
+      ...todo,
+      done: !isChecked,
+    };
+
+    dispatch(editTodo(updatedTodo));
+  }, [dispatch, isChecked, todo]);
 
   const handleDeleteClick = useCallback(
     (event) => {
@@ -123,7 +117,7 @@ const TodoItem = React.memo(({ todo }) => {
         <Label>
           <Checkbox
             type="checkbox"
-            isChecked={isChecked}
+            checked={isChecked}
             onChange={updateIsChecked}
             onClick={handleDoneCheck}
           />

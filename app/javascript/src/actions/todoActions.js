@@ -21,10 +21,13 @@ export const removeTodo = (todoId, userId) => ({
   userId,
 });
 
-export const updateTodo = (todo) => ({
-  type: UPDATE_TODO,
-  todo,
-});
+export const updateTodo = (todo) => {
+  console.log('in updateTodo action creator');
+  return {
+    type: UPDATE_TODO,
+    todo,
+  };
+};
 
 export const createTodo = (todo) => (dispatch) =>
   TodoApiUtil.createTodo(todo).then((newTodo) => {

@@ -35,8 +35,8 @@ module Api
       @todo = Todo.find_by(id: params[:id])
 
       if @todo
-        @todo.update_attributes(todo_params)
-        render json: ['Successfully updated']
+        @todo.update(todo_params)
+        render :show
       else
         render json: ['No todo found'], status: :not_found
       end
@@ -55,8 +55,8 @@ module Api
 
     private
 
-    def todos_params
-      params.permit(:title, :done, :user_id)
+    def todo_params
+      params.require(:todo).permit(:title, :done, :user_id)
     end
   end
 end
