@@ -17,7 +17,6 @@ const Button = styled.button`
 `;
 
 const IconImg = styled.img`
-  // background-color: blue;
   z-index: 5;
 `;
 
@@ -43,8 +42,8 @@ const Right = styled.div`
 `;
 
 const TodoLi = styled.li`
-  color: purple;
-  text-decoration: line-through;
+  color: ${({ isChecked }) => (isChecked ? 'orange' : 'blue')}
+  text-decoration: ${({ isChecked }) => (isChecked ? 'line-through' : 'bold')};
 `;
 
 const TodoDiv = styled.div`
@@ -68,17 +67,17 @@ const TodoItem = React.memo(({ todo }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState('');
-  const [done, setDone] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  console.log('isChecked', isChecked);
 
-  // const todoDoneStatus = false;
-
-  const handleDoneToggle = useCallback((todo) => {
+  const handleDoneCheck = useCallback((todo) => {
     console.log('Todo:', todo);
-    if (!todo.done) {
-      return todo.done;
-    } else {
-      console.log(todo.done);
-      return !todo.done;
+    if (!todo.isChecked) {
+      dispatch(updateTodo(todo));
+      console.log('Todo checked:', isChecked);
+    } else if (!todo.isChecked) {
+      dispatch(updateTodo(todo));
+      console.log('Todo unchecked:', isChecked);
     }
   }, []);
 
@@ -99,9 +98,8 @@ const TodoItem = React.memo(({ todo }) => {
     [dispatch, todo.id]
   );
 
-  const updateDone = useCallback((event) => {
-    console.log(event.currentTarget.checked);
-    return event.currentTarget.checked;
+  const updateIsChecked = useCallback((event) => {
+    setIsChecked(event.currentTarget.checked);
   }, []);
 
   const updateUpdatedTitle = useCallback((event) => {
@@ -116,7 +114,12 @@ const TodoItem = React.memo(({ todo }) => {
     <TodoDiv>
       <Left>
         <Label>
-          <Checkbox type="checkbox" value={done} onChange={updateDone} />
+          <Checkbox
+            type="checkbox"
+            isChecked={isChecked}
+            onChange={updateIsChecked}
+            onClick={handleDoneCheck}
+          />
           {/* <Checkbox type="checkbox" /> */}
         </Label>
         <TodoLi key={todo.id} onChange={updateUpdatedTitle}>
