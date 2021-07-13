@@ -83,7 +83,7 @@ const LoginForm = React.memo(({ processForm }) => {
       };
       processForm(user);
     },
-    [username, password]
+    [username, password, processForm]
   );
 
   return (

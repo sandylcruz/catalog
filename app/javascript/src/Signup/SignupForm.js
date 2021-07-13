@@ -84,7 +84,7 @@ const Signup = React.memo(({ processForm }) => {
       };
       processForm(user);
     },
-    [username, password]
+    [username, password, processForm]
   );
 
   return (

@@ -59,7 +59,7 @@ const TodoForm = ({ processForm }) => {
 
   useEffect(() => {
     dispatch(fetchTodos());
-  }, []);
+  }, [dispatch]);
 
   return (
     <StyledForm onSubmit={handleSubmit}>

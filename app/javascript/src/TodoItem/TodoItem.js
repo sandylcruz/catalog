@@ -92,7 +92,7 @@ const TodoItem = React.memo(({ todo }) => {
       event.preventDefault();
       dispatch(updateTodo(todo.id));
     },
-    [dispatch]
+    [dispatch, todo.id]
   );
 
   const updateUpdatedTitle = useCallback((event) => {
