@@ -70,16 +70,19 @@ const TodoItem = React.memo(({ todo }) => {
   const [isChecked, setIsChecked] = useState(false);
   console.log('isChecked', isChecked);
 
-  const handleDoneCheck = useCallback((todo) => {
-    console.log('Todo:', todo);
-    if (!todo.isChecked) {
-      dispatch(updateTodo(todo));
-      console.log('Todo checked:', isChecked);
-    } else if (!todo.isChecked) {
-      dispatch(updateTodo(todo));
-      console.log('Todo unchecked:', isChecked);
-    }
-  }, []);
+  const handleDoneCheck = useCallback(
+    (todo) => {
+      console.log('Todo:', todo);
+      if (!todo.isChecked) {
+        dispatch(updateTodo(todo));
+        console.log('Todo checked:', isChecked);
+      } else if (!todo.isChecked) {
+        dispatch(updateTodo(todo));
+        console.log('Todo unchecked:', isChecked);
+      }
+    },
+    [dispatch]
+  );
 
   const handleDeleteClick = useCallback(
     (event) => {
@@ -106,6 +109,10 @@ const TodoItem = React.memo(({ todo }) => {
     event.preventDefault();
     console.log(event.currentTarget.value);
     setUpdatedTitle(event.currentTarget.value);
+  }, []);
+
+  const update = useCallback((event, property) => {
+    // return [property]: event.currentTarget.value
   }, []);
 
   const updateIsEditing = () => {};

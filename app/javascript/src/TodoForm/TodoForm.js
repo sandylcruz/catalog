@@ -49,6 +49,7 @@ const TodoForm = ({ processForm }) => {
       };
 
       processForm(todo);
+      setTitle('');
     },
     [processForm, title]
   );

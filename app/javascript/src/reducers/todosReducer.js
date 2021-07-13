@@ -34,6 +34,7 @@ const todosReducer = (state = defaultState, action) => {
 
     case UPDATE_TODO: {
       const nextState = { ...state };
+      console.log(nextState);
       return nextState;
     }
     default: {
