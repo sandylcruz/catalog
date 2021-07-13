@@ -1,13 +1,13 @@
 // import React, { useCallback, useState } from 'react';
 // import { useDispatch } from 'react-redux';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
 import Checkbox from '../components/Checkbox';
 import Delete from './Delete.svg';
-import { deleteTodo } from '../actions/todoActions';
+import { deleteTodo, updateTodo } from '../actions/todoActions';
 import Edit from './Edit.svg';
 
 const Button = styled.button`
@@ -54,6 +54,7 @@ const TodoDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   transition: 0.3s;
+  background-color: white;
 
   &:hover {
     background-color: #e0e0e0;
@@ -62,6 +63,8 @@ const TodoDiv = styled.div`
 
 const TodoItem = React.memo(({ todo }) => {
   const dispatch = useDispatch();
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedTitle, setUpdatedTitle] = useState('');
 
   // const [done, setDone] = useState(false);
 
@@ -83,7 +86,22 @@ const TodoItem = React.memo(({ todo }) => {
     [dispatch, todo]
   );
 
-  const handleEditClick = () => {};
+  const handleEditClick = useCallback(
+    (event) => {
+      // on click, it should change todo li into input
+      event.preventDefault();
+      dispatch(updateTodo(todo.id));
+    },
+    [dispatch]
+  );
+
+  const updateUpdatedTitle = useCallback((event) => {
+    event.preventDefault();
+    console.log(event.currentTarget.value);
+    setUpdatedTitle(event.currentTarget.value);
+  }, []);
+
+  const updateIsEditing = () => {};
 
   return (
     <TodoDiv>
@@ -92,7 +110,9 @@ const TodoItem = React.memo(({ todo }) => {
           {/* <Checkbox type="checkbox" onClick={handleDoneToggle} value={done} /> */}
           <Checkbox type="checkbox" />
         </Label>
-        <TodoLi key={todo.id}>{todo.title}</TodoLi>
+        <TodoLi key={todo.id} onChange={updateUpdatedTitle}>
+          {todo.title}
+        </TodoLi>
       </Left>
       <Right>
         <Button onClick={handleEditClick}>

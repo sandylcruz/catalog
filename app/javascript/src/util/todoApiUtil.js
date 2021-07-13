@@ -19,7 +19,7 @@ export const updateTodo = (todo) =>
   new Promise((resolve, reject) => {
     ajax({
       type: 'PATCH',
-      url: 'api/todos',
+      url: `api/todos/${todo.id}`,
       data: todo,
       success: (updatedTodo) => {
         resolve(updatedTodo);

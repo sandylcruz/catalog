@@ -38,7 +38,7 @@ const TodoForm = ({ processForm }) => {
 
   const handleDeleteClick = useCallback((event) => {
     event.preventDefault();
-  });
+  }, []);
 
   const handleSubmit = useCallback(
     (event) => {
@@ -50,7 +50,7 @@ const TodoForm = ({ processForm }) => {
 
       processForm(todo);
     },
-    [title]
+    [processForm, title]
   );
 
   const updateTitle = useCallback((event) => {

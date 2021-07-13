@@ -39,6 +39,10 @@ export const deleteTodo = (todoId) => (dispatch, getState) => {
   });
 };
 
+export const editTodo = () => (dispatch) => {
+  return TodoApiUtil.updateTodo();
+};
+
 export const fetchTodos = () => (dispatch) =>
   TodoApiUtil.fetchTodos().then((todos) => {
     dispatch(receiveTodos(todos));
