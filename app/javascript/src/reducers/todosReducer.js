@@ -10,6 +10,7 @@ const defaultState = {};
 const todosReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
+  console.log(action);
   switch (action.type) {
     case RECEIVE_TODO: {
       const nextState = { ...state };

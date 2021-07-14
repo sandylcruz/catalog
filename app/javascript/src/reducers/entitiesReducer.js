@@ -5,8 +5,8 @@ import todosReducer from './todosReducer';
 import usersReducer from './usersReducer';
 
 const entitiesReducer = combineReducers({
-  // lists: ListsReducer,
-  todos: todosReducer,
+  lists: listsReducer,
+  // todos: todosReducer,
   users: usersReducer,
 });
 

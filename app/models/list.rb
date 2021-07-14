@@ -11,6 +11,6 @@ class List < ApplicationRecord
 
   has_many :todos,
            class_name: 'Todo',
-           foreign_key: :todo_id,
+           foreign_key: :list_id,
            primary_key: :id
 end

@@ -15,7 +15,7 @@ class User < ApplicationRecord
            foreign_key: :user_id,
            primary_key: :id
 
-  has_many :todos, through: :lists, source: :user
+  has_many :todos, through: :lists, source: :todos
 
   attr_reader :password
 
