@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
+import listsReducer from './listsReducer';
 import todosReducer from './todosReducer';
 import usersReducer from './usersReducer';
 
 const entitiesReducer = combineReducers({
+  // lists: ListsReducer,
   todos: todosReducer,
   users: usersReducer,
 });

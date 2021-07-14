@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_212236) do
+ActiveRecord::Schema.define(version: 2021_07_14_185723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lists", force: :cascade do |t|
+    t.integer "todo_ids", default: [], array: true
+    t.string "title", null: false
+    t.index ["title"], name: "index_lists_on_title"
+  end
 
   create_table "todos", force: :cascade do |t|
     t.string "title", null: false
