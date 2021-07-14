@@ -10,10 +10,12 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :session_token, presence: true, uniqueness: true
 
-  has_many :todos,
-           class_name: 'Todo',
+  has_many :lists,
+           class_name: 'List',
            foreign_key: :user_id,
            primary_key: :id
+
+  has_many :todos, through: :lists, source: :user
 
   attr_reader :password
 

@@ -4,10 +4,12 @@
 class Todo < ApplicationRecord
   validates :title, presence: true
   validates :done, inclusion: [true, false]
-  validates :user_id, presence: true
+  validates :user, presence: true
 
-  belongs_to :user,
-             class_name: 'User',
-             foreign_key: :user_id,
+  has_one :user, through: :list, source: :user
+
+  belongs_to :list,
+             class_name: 'List',
+             foreign_key: :list_id,
              primary_key: :id
 end
