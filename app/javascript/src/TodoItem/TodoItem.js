@@ -71,6 +71,7 @@ const TodoItem = React.memo(({ todo }) => {
   const [updatedTitle, setUpdatedTitle] = useState('');
   const [isOptimisticallyChecked, setIsOptimisticallyChecked] = useState(null);
 
+  console.log(isEditing);
   const handleDoneCheck = useCallback(() => {
     setIsOptimisticallyChecked(!todo.done);
 
@@ -105,6 +106,10 @@ const TodoItem = React.memo(({ todo }) => {
     [dispatch, todo.id]
   );
 
+  const toggleIsEditing = useCallback(() => {
+    setIsEditing(!isEditing);
+  }, [isEditing]);
+
   const updateUpdatedTitle = useCallback((event) => {
     event.preventDefault();
     console.log(event.currentTarget.value);
@@ -130,15 +135,18 @@ const TodoItem = React.memo(({ todo }) => {
             }
             onChange={handleDoneCheck}
           />
-          {/* <Checkbox type="checkbox" /> */}
         </Label>
-        <TodoLi key={todo.id} onChange={updateUpdatedTitle}>
-          {todo.title}
-        </TodoLi>
+        {isEditing ? (
+          <input placeholder={todo.title} />
+        ) : (
+          <TodoLi key={todo.id} onChange={updateUpdatedTitle}>
+            {todo.title}
+          </TodoLi>
+        )}
       </Left>
       <Right>
         <Button onClick={handleEditClick}>
-          <IconImg src={Edit} alt="Edit button" />
+          <IconImg src={Edit} alt="Edit button" onClick={toggleIsEditing} />
         </Button>
 
         <Button onClick={handleDeleteClick}>
