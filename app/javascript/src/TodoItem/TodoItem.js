@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
+import AddTodoButton from '../components/AddTodoButton';
 import Checkbox from '../components/Checkbox';
 import Delete from './Delete.svg';
 import { deleteTodo, editTodo, updateTodo } from '../actions/todoActions';
@@ -59,6 +60,7 @@ const TodoDiv = styled.div`
   align-items: center;
   transition: 0.3s;
   background-color: white;
+  minimum-width: 800px;
 
   &:hover {
     background-color: #e0e0e0;
@@ -71,7 +73,14 @@ const TodoItem = React.memo(({ todo }) => {
   const [updatedTitle, setUpdatedTitle] = useState('');
   const [isOptimisticallyChecked, setIsOptimisticallyChecked] = useState(null);
 
-  console.log(isEditing);
+  const handleDeleteClick = useCallback(
+    (event) => {
+      event.preventDefault();
+      dispatch(deleteTodo(todo.id));
+    },
+    [dispatch, todo]
+  );
+
   const handleDoneCheck = useCallback(() => {
     setIsOptimisticallyChecked(!todo.done);
 
@@ -89,14 +98,6 @@ const TodoItem = React.memo(({ todo }) => {
       });
   }, [dispatch, todo]);
 
-  const handleDeleteClick = useCallback(
-    (event) => {
-      event.preventDefault();
-      dispatch(deleteTodo(todo.id));
-    },
-    [dispatch, todo]
-  );
-
   const handleEditClick = useCallback(
     (event) => {
       // on click, it should change todo li into input
@@ -106,18 +107,19 @@ const TodoItem = React.memo(({ todo }) => {
     [dispatch, todo.id]
   );
 
-  const toggleIsEditing = useCallback(() => {
-    setIsEditing(!isEditing);
-  }, [isEditing]);
-
-  const updateUpdatedTitle = useCallback((event) => {
-    event.preventDefault();
-    console.log(event.currentTarget.value);
-    setUpdatedTitle(event.currentTarget.value);
+  const submitEditedTitle = useCallback(() => {
+    console.log('submit edited title');
   }, []);
 
-  const update = useCallback((event, property) => {
-    // return [property]: event.currentTarget.value
+  const toggleIsEditing = useCallback(() => {
+    setIsEditing(!isEditing);
+    if (!isEditing) {
+      setUpdatedTitle(todo.title);
+    }
+  }, [isEditing, todo.title]);
+
+  const handleEditedTitle = useCallback((event) => {
+    setUpdatedTitle(event.target.value);
   }, []);
 
   const updateIsEditing = () => {};
@@ -137,11 +139,14 @@ const TodoItem = React.memo(({ todo }) => {
           />
         </Label>
         {isEditing ? (
-          <input placeholder={todo.title} />
+          <div>
+            <input value={updatedTitle} onChange={handleEditedTitle} />
+            <AddTodoButton type="button" onClick={submitEditedTitle}>
+              ✓
+            </AddTodoButton>
+          </div>
         ) : (
-          <TodoLi key={todo.id} onChange={updateUpdatedTitle}>
-            {todo.title}
-          </TodoLi>
+          <TodoLi key={todo.id}>{todo.title}</TodoLi>
         )}
       </Left>
       <Right>

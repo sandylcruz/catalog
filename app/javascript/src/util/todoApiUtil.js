@@ -17,7 +17,6 @@ export const createTodo = (todo) =>
 
 export const updateTodo = (todo) =>
   new Promise((resolve, reject) => {
-    console.log(todo);
     ajax({
       type: 'PATCH',
       url: `api/todos/${todo.id}`,

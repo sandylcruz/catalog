@@ -22,7 +22,6 @@ export const removeTodo = (todoId, userId) => ({
 });
 
 export const updateTodo = (todo) => {
-  console.log('in updateTodo action creator');
   return {
     type: UPDATE_TODO,
     todo,
@@ -43,7 +42,6 @@ export const deleteTodo = (todoId) => (dispatch, getState) => {
 };
 
 export const editTodo = (todo) => (dispatch) => {
-  console.log('in editTodo action');
   return TodoApiUtil.updateTodo(todo).then(() => {
     dispatch(updateTodo(todo));
   });
