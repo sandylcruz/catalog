@@ -3,7 +3,6 @@
 # add list model
 class List < ApplicationRecord
   validates :title, presence: true
-  validates :todos, presence: true
 
   belongs_to :user,
              class_name: 'User',

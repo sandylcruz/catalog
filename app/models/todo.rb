@@ -6,10 +6,10 @@ class Todo < ApplicationRecord
   validates :done, inclusion: [true, false]
   validates :user, presence: true
 
-  has_one :user, through: :list, source: :user
-
   belongs_to :list,
              class_name: 'List',
              foreign_key: :list_id,
              primary_key: :id
+
+  has_one :user, through: :list, source: :user
 end

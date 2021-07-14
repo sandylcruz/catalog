@@ -12,9 +12,9 @@ User.create(username: 'calpal', password: 'password')
 User.create(username: 'stinky', password: 'password')
 User.create(username: 'squeakfreak', password: 'password')
 
-List.create(title: 'Cat Todos', user: User.first, todo_ids: [0, 1, 2])
-List.create(title: 'My second list', user: User.first, todo_ids: [])
-List.create(title: 'Today`s Todos', user: User.last, todo_ids: [])
+List.create(title: 'Cat Todos', user: User.first)
+List.create(title: 'My second list', user: User.first)
+List.create(title: 'Today`s Todos', user: User.last)
 
 Todo.create(title: 'Give Callie a bath', user: User.first, done: false, list: List.first)
 Todo.create(title: 'Give Linus treats', user: User.first, done: false, list: List.first)
