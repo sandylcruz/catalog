@@ -33,8 +33,7 @@ const todosReducer = (state = defaultState, action) => {
     }
 
     case UPDATE_TODO: {
-      const nextState = { ...state };
-      console.log(nextState);
+      const nextState = { ...state, [action.todo.id]: action.todo };
       return nextState;
     }
     default: {

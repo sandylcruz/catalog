@@ -42,8 +42,10 @@ const Right = styled.div`
 `;
 
 const TodoLi = styled.li`
-  color: ${({ isChecked }) => (isChecked ? 'orange' : 'blue')}
-  text-decoration: ${({ isChecked }) => (isChecked ? 'line-through' : 'bold')};
+  color: ${({ isOptimisticallyChecked }) =>
+    isOptimisticallyChecked ? 'orange' : 'blue'}
+  text-decoration: ${({ isOptimisticallyChecked }) =>
+    isOptimisticallyChecked ? 'line-through' : 'bold'};
 `;
 
 const TodoDiv = styled.div`
@@ -67,16 +69,24 @@ const TodoItem = React.memo(({ todo }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState('');
-  const [isChecked, setIsChecked] = useState(todo.done);
+  const [isOptimisticallyChecked, setIsOptimisticallyChecked] = useState(null);
 
   const handleDoneCheck = useCallback(() => {
+    setIsOptimisticallyChecked(!todo.done);
+
     const updatedTodo = {
       ...todo,
-      done: !isChecked,
+      done: !todo.done,
     };
 
-    dispatch(editTodo(updatedTodo));
-  }, [dispatch, isChecked, todo]);
+    dispatch(editTodo(updatedTodo))
+      .catch(() => {
+        alert('not working');
+      })
+      .finally(() => {
+        setIsOptimisticallyChecked(null);
+      });
+  }, [dispatch, todo]);
 
   const handleDeleteClick = useCallback(
     (event) => {
@@ -94,10 +104,6 @@ const TodoItem = React.memo(({ todo }) => {
     },
     [dispatch, todo.id]
   );
-
-  const updateIsChecked = useCallback((event) => {
-    setIsChecked(event.currentTarget.checked);
-  }, []);
 
   const updateUpdatedTitle = useCallback((event) => {
     event.preventDefault();
@@ -117,9 +123,12 @@ const TodoItem = React.memo(({ todo }) => {
         <Label>
           <Checkbox
             type="checkbox"
-            checked={isChecked}
-            onChange={updateIsChecked}
-            onClick={handleDoneCheck}
+            checked={
+              isOptimisticallyChecked !== null
+                ? isOptimisticallyChecked
+                : todo.done
+            }
+            onChange={handleDoneCheck}
           />
           {/* <Checkbox type="checkbox" /> */}
         </Label>
