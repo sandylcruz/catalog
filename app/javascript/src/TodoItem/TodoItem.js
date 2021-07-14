@@ -70,7 +70,7 @@ const TodoDiv = styled.div`
 const TodoItem = React.memo(({ todo }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
-  const [updatedTitle, setUpdatedTitle] = useState('');
+  const [updatedTitle, setUpdatedTitle] = useState(null);
   const [isOptimisticallyChecked, setIsOptimisticallyChecked] = useState(null);
 
   const handleDeleteClick = useCallback(
@@ -107,22 +107,36 @@ const TodoItem = React.memo(({ todo }) => {
     [dispatch, todo.id]
   );
 
-  const submitEditedTitle = useCallback(() => {
-    console.log('submit edited title');
-  }, []);
+  const handleTitleEditSubmit = useCallback(
+    (e) => {
+      const updatedTodo = {
+        ...todo,
+        title: updatedTitle,
+      };
+      setIsEditing(false);
+      dispatch(editTodo(updatedTodo))
+        .catch(() => {
+          alert('There was a problem');
+        })
+        .finally(() => {
+          setUpdatedTitle(null);
+        });
+    },
+    [dispatch, todo, updatedTitle]
+  );
 
   const toggleIsEditing = useCallback(() => {
     setIsEditing(!isEditing);
     if (!isEditing) {
       setUpdatedTitle(todo.title);
+    } else {
+      setUpdatedTitle(null);
     }
   }, [isEditing, todo.title]);
 
   const handleEditedTitle = useCallback((event) => {
     setUpdatedTitle(event.target.value);
   }, []);
-
-  const updateIsEditing = () => {};
 
   return (
     <TodoDiv>
@@ -139,14 +153,12 @@ const TodoItem = React.memo(({ todo }) => {
           />
         </Label>
         {isEditing ? (
-          <div>
+          <form onSubmit={handleTitleEditSubmit}>
             <input value={updatedTitle} onChange={handleEditedTitle} />
-            <AddTodoButton type="button" onClick={submitEditedTitle}>
-              ✓
-            </AddTodoButton>
-          </div>
+            <button type="submit">✓</button>
+          </form>
         ) : (
-          <TodoLi key={todo.id}>{todo.title}</TodoLi>
+          <TodoLi key={todo.id}>{updatedTitle || todo.title}</TodoLi>
         )}
       </Left>
       <Right>
