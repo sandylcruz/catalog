@@ -5,27 +5,30 @@ export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const REMOVE_LIST = 'REMOVE_LIST';
 export const UPDATE_LIST = 'UPDATE_LIST';
 
-export const receiveList = (list) => {
-  type: RECEIVE_LIST, list;
-};
+export const receiveList = (list) => ({
+  type: RECEIVE_LIST,
+  list,
+});
 
-export const receiveLists = (lists) => {
-  type: RECEIVE_LISTS, lists;
-};
+export const receiveLists = (lists) => ({
+  type: RECEIVE_LISTS,
+  lists,
+});
 
-export const removeList = (listId, userId) => {
-  type: REMOVE_LIST, list;
-};
+export const removeList = (listId, userId) => ({
+  type: REMOVE_LIST,
+  list,
+});
 
-export const updateList = (list) => {
-  type: UPDATE_LIST, list;
-};
+export const updateList = (list) => ({
+  type: UPDATE_LIST,
+  list,
+});
 
-export const createList = (list) => (dispatch) => {
+export const createList = (list) => (dispatch) =>
   ListApiUtil.createList(list).then((newList) => {
     dispatch(receiveList(newList));
   });
-};
 
 export const deleteList = (list) => (dispatch) => {
   ListApiUtil.removeList(list).then(() => {
