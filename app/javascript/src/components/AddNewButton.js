@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AddTodoButton = styled.button`
+const AddNewButton = styled.button`
   height: 35px;
   width: 35px;
   background-color: #31d28f;
@@ -14,4 +14,4 @@ const AddTodoButton = styled.button`
   }
 `;
 
-export default AddTodoButton;
+export default AddNewButton;

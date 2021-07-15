@@ -1,4 +1,4 @@
-import * as ListApiUtil from '../util/ListApiUtil';
+import * as ListApiUtil from '../util/listApiUtil';
 
 export const RECEIVE_LIST = 'RECEIVE_LIST';
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';

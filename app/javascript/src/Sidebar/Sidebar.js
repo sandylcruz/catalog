@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import ListsContainer from '../Lists/ListsContainer';
+
 const A = styled.a`
    font-size: 20px;
     text-transform: uppercase;
@@ -45,7 +47,7 @@ const Sidebar = () => {
       </H3>
       <H3>
         {' '}
-        <A href="/" aria-label="lists">
+        <A href="/#/lists" component={ListsContainer} aria-label="lists">
           Lists
         </A>
       </H3>

@@ -1,11 +1,8 @@
-// import React, { useCallback, useState } from 'react';
-// import { useDispatch } from 'react-redux';
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
-import AddTodoButton from '../components/AddTodoButton';
 import Checkbox from '../components/Checkbox';
 import Delete from './Delete.svg';
 import { deleteTodo, editTodo, updateTodo } from '../actions/todoActions';

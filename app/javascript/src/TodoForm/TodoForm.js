@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
-import AddTodoButton from '../components/AddTodoButton';
+import AddNewButton from '../components/AddNewButton';
 import DeleteTodoButton from '../components/DeleteTodoButton';
 import { fetchTodos } from '../actions/todoActions';
+import AddFormInput from '../components/AddFormInput';
 
 const FormElements = styled.div`
   display: flex;
@@ -16,20 +17,6 @@ const StyledForm = styled.form`
   padding: 20px;
   display: flex;
   flex-direction: column;
-`;
-
-const TodoInput = styled.input`
-  border-radius: 5px;
-  border: 1px solid #d3d3d3;
-  padding: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 300px;
-  transition: 0.2s;
-
-  &:hover {
-    box-shadow: 0 0 0 4px #dbcaff;
-  }
 `;
 
 const TodoForm = ({ processForm }) => {
@@ -66,13 +53,13 @@ const TodoForm = ({ processForm }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <FormElements>
-        <TodoInput
-          type="text"
-          placeholder="Write a new task..."
-          value={title}
+        <AddFormInput
           onChange={updateTitle}
+          placeholder="Write a new task..."
+          type="text"
+          value={title}
         />
-        <AddTodoButton type="submit">✓</AddTodoButton>
+        <AddNewButton type="submit">✓</AddNewButton>
         <DeleteTodoButton type="button" onClick={handleDeleteClick}>
           X
         </DeleteTodoButton>

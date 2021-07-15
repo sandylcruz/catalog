@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import GlobalStyle from './GlobalStyle.ts';
 import Header from './HeaderNav/Header';
+import ListsContainer from './Lists/ListsContainer';
+
 import LoginFormContainer from './Login/LoginFormContainer';
 import Sidebar from './Sidebar/Sidebar';
 import SignupContainer from './Signup/SignupContainer';
@@ -30,6 +32,7 @@ const App = React.memo(({ store }) => {
             <Route path="/login" component={LoginFormContainer} />
             <Route path="/signup" component={SignupContainer} />
             <Route path="/todos" component={TodosContainer} />
+            <Route path="/lists" component={ListsContainer} />
           </Switch>
         </LowerComponents>
       </HashRouter>
