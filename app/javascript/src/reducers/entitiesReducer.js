@@ -6,7 +6,7 @@ import usersReducer from './usersReducer';
 
 const entitiesReducer = combineReducers({
   lists: listsReducer,
-  // todos: todosReducer,
+  todos: todosReducer,
   users: usersReducer,
 });
 

@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';
-
-import todosReducer from './todosReducer';
-
-const listsReducer = combineReducers({
-  todos: todosReducer,
-});
+const listsReducer = (state = {}, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
 
 export default listsReducer;
