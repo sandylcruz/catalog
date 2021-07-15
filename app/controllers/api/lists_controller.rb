@@ -4,7 +4,8 @@ module Api
   # lists controller
   class ListsController < ApplicationController
     def create
-      @list = List.new(user_id: current_user.id, title: params[:title])
+      @list = List.new(list_params)
+      @list.user_id = current_user.id
 
       if @list.save
         render :show
@@ -14,7 +15,7 @@ module Api
     end
 
     def index
-      @todos = current_user.lists
+      @lists = current_user.lists
       render :index
     end
 
@@ -52,7 +53,7 @@ module Api
     private
 
     def list_params
-      params.require(:list).permit(:title, :user_id, :todo_ids)
+      params.require(:list).permit(:title)
     end
   end
 end

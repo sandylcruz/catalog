@@ -6,7 +6,9 @@ module Api
     before_action :ensure_logged_in
 
     def create
-      @todo = Todo.new(user_id: current_user.id, done: false, title: params[:title])
+      # @todo = Todo.new(done: false, title: params[:title], list_id:)
+      @todo = Todo.new(todo_params.except(:done))
+      @todo.done = false
 
       if @todo.save
         render :show
@@ -56,7 +58,7 @@ module Api
     private
 
     def todo_params
-      params.require(:todo).permit(:title, :done, :user_id)
+      params.require(:todo).permit(:title, :done, :list_id)
     end
   end
 end

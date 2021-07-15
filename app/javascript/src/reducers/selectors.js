@@ -18,6 +18,18 @@ export const selectTodoById = createSelector(
   (todo) => todo
 );
 
+export const selectUsersLists = createSelector(
+  selectCurrentUser,
+  (state) => state.entities.lists,
+  (currentUser, lists) => {
+    if (!currentUser) {
+      return [];
+    }
+
+    return currentUser.listIds.map((listId) => lists[listId]);
+  }
+);
+
 export const selectUsersTodos = createSelector(
   selectCurrentUser,
   (state) => state.entities.todos,
