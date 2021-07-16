@@ -24,6 +24,7 @@ const listsReducer = (state = defaultState, action) => {
     }
     case RECEIVE_LISTS: {
       const { lists } = action;
+      // console.log(action);
 
       return lists.reduce(
         (accumulator, list) => {
@@ -47,9 +48,9 @@ const listsReducer = (state = defaultState, action) => {
 
     case RECEIVE_TODOS: {
       const { todos } = action;
-      // const listId =
       const { todoIds } = action.todos;
-      console.log(action);
+      const { list_id } = action.todos[0].list_id;
+      console.log(action.todos[0].list_id);
 
       return {
         ...state,

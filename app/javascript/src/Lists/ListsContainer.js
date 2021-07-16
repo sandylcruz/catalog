@@ -12,8 +12,6 @@ const ListContainer = styled.div`
 `;
 
 const ListsContainer = React.memo(() => {
-  // const lists = useSelector(selectUsersLists);
-  // console.log('Lists from selector:', lists);
   const lists = useSelector(selectUsersLists);
 
   return (

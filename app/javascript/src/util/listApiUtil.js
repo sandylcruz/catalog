@@ -56,6 +56,7 @@ export const fetchLists = () =>
       type: 'GET',
       url: 'api/lists',
       success: (lists) => {
+        // console.log(lists);
         resolve(lists);
       },
       error: () => {
