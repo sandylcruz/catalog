@@ -26,7 +26,6 @@ const usersReducer = (state = defaultState, action) => {
       const currentUser = state[currentUserId];
       const previousListItems = currentUser.listIds;
 
-      // console.log(list);
       return {
         ...state,
         [currentUserId]: {

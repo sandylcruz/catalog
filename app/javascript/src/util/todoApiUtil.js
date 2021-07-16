@@ -5,7 +5,13 @@ export const createTodo = (todo) =>
     ajax({
       type: 'POST',
       url: 'api/todos',
-      data: todo,
+      data: {
+        todo: {
+          title: todo.title,
+          done: todo.done,
+          listId: todo.listId,
+        },
+      },
       success: (newTodo) => {
         resolve(newTodo);
       },

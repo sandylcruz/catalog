@@ -7,6 +7,10 @@ import { selectUsersTodos } from '../reducers/selectors';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoIndex from '../TodoIndex/TodoIndex';
 
+const H1 = styled.h1`
+  padding: 20px;
+`;
+
 const TodosContainer = styled.div``;
 
 const Todos = React.memo(() => {
@@ -22,6 +26,7 @@ const Todos = React.memo(() => {
 
   return (
     <TodosContainer>
+      <H1>Todos</H1>
       <TodoForm processForm={processForm} />
       <TodoIndex numberOfTodos={numberOfTodos} todos={todos} />
     </TodosContainer>

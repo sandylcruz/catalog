@@ -24,12 +24,14 @@ const listsReducer = (state = defaultState, action) => {
     }
     case RECEIVE_LISTS: {
       const { lists } = action;
-      console.log('Action.lists in listsReducer', action.lists);
 
-      return lists.reduce((accumulator, list) => {
-        accumulator[list.id] = list;
-        return accumulator;
-      }, {});
+      return lists.reduce(
+        (accumulator, list) => {
+          accumulator[list.id] = list;
+          return accumulator;
+        },
+        { ...state }
+      );
     }
 
     case REMOVE_LIST: {
@@ -45,15 +47,13 @@ const listsReducer = (state = defaultState, action) => {
 
     case RECEIVE_TODOS: {
       const { todos } = action;
-      const currentUserId = todos[0].user_id;
-      const currentUser = state[currentUserId];
+      // const listId =
+      const { todoIds } = action.todos;
+      console.log(action);
 
       return {
         ...state,
-        [currentUserId]: {
-          ...currentUser,
-          todoIds: todos.map((todo) => todo.id),
-        },
+        todoIds: todos.map((todo) => todo.id),
       };
     }
 
@@ -74,10 +74,8 @@ const listsReducer = (state = defaultState, action) => {
 
     case REMOVE_TODO: {
       const { todoId, userId } = action;
-      console.log('action:', action);
       const currentUser = state[userId];
       const previousTodos = currentUser.todoIds;
-      console.log('in users reducer');
 
       return {
         ...state,
