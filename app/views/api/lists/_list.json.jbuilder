@@ -2,6 +2,6 @@
 
 json.extract! list, :title, :user_id, :id
 
-json.todoIds list.todo_ids do |todo|
-  json.id todo
+json.todos do
+  json.array! list.todos, partial: 'api/todos/todo', as: :todo
 end

@@ -54,7 +54,6 @@ const listsReducer = (state = defaultState, action) => {
 
       return {
         ...state,
-        todoIds: todos.map((todo) => todo.id),
       };
     }
 
