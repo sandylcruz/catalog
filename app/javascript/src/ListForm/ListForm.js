@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import AddFormInput from '../components/AddFormInput';
 import AddNewButton from '../components/AddNewButton';
 import { createList } from '../actions/listActions';
-import { fetchLists } from '../util/listApiUtil';
+import { fetchLists } from '../actions/listActions';
 import { selectUsersLists } from '../reducers/selectors';
 
 const InputContainer = styled.div`
@@ -18,7 +18,7 @@ const ListForm = React.memo(() => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const lists = useSelector(selectUsersLists);
-  console.log(lists);
+  console.log('Lists from selector:', lists);
 
   const handleSubmit = useCallback(
     (event) => {
@@ -48,7 +48,7 @@ const ListForm = React.memo(() => {
 
   useEffect(() => {
     dispatch(fetchLists());
-  });
+  }, [dispatch]);
 
   return (
     <form onSubmit={handleSubmit}>

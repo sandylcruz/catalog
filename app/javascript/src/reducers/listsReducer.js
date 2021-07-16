@@ -19,18 +19,26 @@ const listsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_LIST: {
       const nextState = { ...state };
-      console.log(action);
       nextState[action.list.id] = action.list;
       return nextState;
     }
     case RECEIVE_LISTS: {
-      const nextState = { ...state };
+      const { lists } = action;
+      const currentUserId = lists[0].user_id;
+      console.log('Action.lists in listsReducer', action.lists);
 
-      actions.lists.forEach((list) => {
-        nextState[list.id] = list;
-      });
+      return lists.reduce((accumulator, list) => {
+        accumulator[list.id] = list;
+        return accumulator;
+      }, {});
 
-      return nextState;
+      return {
+        ...state,
+        [currentUserId]: {
+          ...currentUser,
+          lists: lists.map((list) => list.id),
+        },
+      };
     }
 
     case REMOVE_LIST: {
