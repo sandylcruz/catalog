@@ -17,12 +17,13 @@ const listsReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case 'RECEIVE_LIST': {
+    case RECEIVE_LIST: {
       const nextState = { ...state };
+      console.log(action);
       nextState[action.list.id] = action.list;
       return nextState;
     }
-    case 'RECEIVE_LISTS': {
+    case RECEIVE_LISTS: {
       const nextState = { ...state };
 
       actions.lists.forEach((list) => {
@@ -31,12 +32,14 @@ const listsReducer = (state = defaultState, action) => {
 
       return nextState;
     }
-    case 'REMOVE_LIST': {
+
+    case REMOVE_LIST: {
       const nextState = { ...state };
       delete nextState[action.list.id];
       return nextState;
     }
-    case 'UPDATE_LIST': {
+
+    case UPDATE_LIST: {
       const nextState = { ...state, [action.list.id]: action.list };
       return nextState;
     }

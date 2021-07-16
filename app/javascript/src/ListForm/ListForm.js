@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -16,8 +17,8 @@ const InputContainer = styled.div`
 const ListForm = React.memo(() => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  // const lists = useSelector(selectUsersLists);
-  // console.log(lists);
+  const lists = useSelector(selectUsersLists);
+  console.log(lists);
 
   const handleSubmit = useCallback(
     (event) => {
@@ -45,9 +46,9 @@ const ListForm = React.memo(() => {
     [updateTitle];
   }, []);
 
-  const useEffect = useCallback(() => {
+  useEffect(() => {
     dispatch(fetchLists());
-  }, [dispatch]);
+  });
 
   return (
     <form onSubmit={handleSubmit}>
