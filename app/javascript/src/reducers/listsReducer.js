@@ -24,21 +24,12 @@ const listsReducer = (state = defaultState, action) => {
     }
     case RECEIVE_LISTS: {
       const { lists } = action;
-      const currentUserId = lists[0].user_id;
       console.log('Action.lists in listsReducer', action.lists);
 
       return lists.reduce((accumulator, list) => {
         accumulator[list.id] = list;
         return accumulator;
       }, {});
-
-      return {
-        ...state,
-        [currentUserId]: {
-          ...currentUser,
-          lists: lists.map((list) => list.id),
-        },
-      };
     }
 
     case REMOVE_LIST: {

@@ -53,6 +53,12 @@ const Sidebar = () => {
       </H3>
       <H3>
         {' '}
+        <A href="/#/todos" aria-label="tags">
+          Todos
+        </A>
+      </H3>
+      <H3>
+        {' '}
         <A href="/" aria-label="tags">
           Tags
         </A>
