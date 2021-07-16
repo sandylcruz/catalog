@@ -1,9 +1,10 @@
 import { RECEIVE_CURRENT_USER } from '../actions/sessionActions';
+
 import {
-  RECEIVE_TODO,
-  RECEIVE_TODOS,
-  REMOVE_TODO,
-} from '../actions/todoActions';
+  RECEIVE_LIST,
+  RECEIVE_LISTS,
+  REMOVE_LIST,
+} from '../actions/listActions';
 
 const defaultState = {};
 
@@ -13,50 +14,42 @@ const usersReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER: {
       const { currentUser } = action;
-      return { ...state, [currentUser.id]: { ...currentUser, todoIds: [] } };
+      return {
+        ...state,
+        [currentUser.id]: { ...currentUser, todoIds: [], listIds: [] },
+      };
     }
-    case RECEIVE_TODOS: {
-      const { todos } = action;
-      const currentUserId = todos[0].user_id;
+
+    case RECEIVE_LIST: {
+      const { list } = action;
+      const currentUserId = list.user_id;
+      const currentUser = state[currentUserId];
+      const previousListItems = currentUser.listIds;
+
+      // console.log(list);
+      return {
+        ...state,
+        [currentUserId]: {
+          ...currentUser,
+          listIds: [...previousListItems, list.id],
+        },
+      };
+    }
+
+    case RECEIVE_LISTS: {
+      const { lists } = action;
+      const currentUserId = lists[0].user_id;
       const currentUser = state[currentUserId];
 
       return {
         ...state,
         [currentUserId]: {
           ...currentUser,
-          todoIds: todos.map((todo) => todo.id),
-        },
-      };
-    }
-    case RECEIVE_TODO: {
-      const { todo } = action;
-      const currentUserId = todo.user_id;
-      const currentUser = state[currentUserId];
-      const previousTodos = currentUser.todoIds;
-
-      return {
-        ...state,
-        [currentUserId]: {
-          ...currentUser,
-          todoIds: [...previousTodos, todo.id],
+          listIds: lists.map((list) => list.id),
         },
       };
     }
 
-    case REMOVE_TODO: {
-      const { todoId, userId } = action;
-
-      const currentUser = state[userId];
-      const previousTodos = currentUser.todoIds;
-
-      return {
-        ...state,
-        [userId]: {
-          ...currentUser,
-          todoIds: previousTodos.filter((id) => id !== todoId),
-        },
-      };
-    }
     default: {
       return state;
     }

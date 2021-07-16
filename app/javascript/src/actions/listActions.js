@@ -25,10 +25,11 @@ export const updateList = (list) => ({
   list,
 });
 
-export const createList = (list) => (dispatch) =>
-  ListApiUtil.createList(list).then((newList) => {
+export const createList = (list) => (dispatch) => {
+  return ListApiUtil.createList(list).then((newList) => {
     dispatch(receiveList(newList));
   });
+};
 
 export const deleteList = (list) => (dispatch) => {
   ListApiUtil.removeList(list).then(() => {

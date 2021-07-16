@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloadedState = {
       entities: {
         users: {
-          [id]: { ...currentUser, todoIds: [] },
+          [id]: { ...currentUser, listIds: [] },
         },
       },
       session: { id },

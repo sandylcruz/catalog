@@ -6,7 +6,6 @@ module Api
     before_action :ensure_logged_in
 
     def create
-      # @todo = Todo.new(done: false, title: params[:title], list_id:)
       @todo = Todo.new(todo_params.except(:done))
       @todo.done = false
 

@@ -5,7 +5,13 @@ export const createList = (list) =>
     ajax({
       type: 'POST',
       url: 'api/lists',
-      data: list,
+      data: {
+        list: {
+          user_id: list.user_id,
+          title: list.title,
+          done: list.done,
+        },
+      },
       success: (list) => {
         resolve(list);
       },

@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import AddFormInput from '../components/AddFormInput';
 import AddNewButton from '../components/AddNewButton';
 import { createList } from '../actions/listActions';
+import { fetchLists } from '../util/listApiUtil';
+import { selectUsersLists } from '../reducers/selectors';
 
 const InputContainer = styled.div`
   display: flex;
@@ -14,6 +16,8 @@ const InputContainer = styled.div`
 const ListForm = React.memo(() => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
+  // const lists = useSelector(selectUsersLists);
+  // console.log(lists);
 
   const handleSubmit = useCallback(
     (event) => {
@@ -22,7 +26,6 @@ const ListForm = React.memo(() => {
       const list = {
         title,
       };
-
       processForm(list);
       setTitle('');
     },
@@ -37,12 +40,14 @@ const ListForm = React.memo(() => {
   );
 
   const updateTitle = useCallback((event) => {
-    console.log(event.currentTarget.value);
-
     setTitle(event.currentTarget.value);
 
     [updateTitle];
   }, []);
+
+  const useEffect = useCallback(() => {
+    dispatch(fetchLists());
+  }, [dispatch]);
 
   return (
     <form onSubmit={handleSubmit}>
