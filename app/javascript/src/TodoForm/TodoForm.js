@@ -13,6 +13,11 @@ const FormElements = styled.div`
   align-items: center;
 `;
 
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const StyledForm = styled.form`
   padding: 20px;
   display: flex;
@@ -21,6 +26,7 @@ const StyledForm = styled.form`
 
 const TodoForm = ({ processForm }) => {
   const dispatch = useDispatch();
+  const [list, setList] = useState('');
   const [title, setTitle] = useState('');
 
   const handleDeleteClick = useCallback((event) => {
@@ -53,12 +59,20 @@ const TodoForm = ({ processForm }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <FormElements>
-        <AddFormInput
-          onChange={updateTitle}
-          placeholder="Write a new task..."
-          type="text"
-          value={title}
-        />
+        <InputContainer>
+          <AddFormInput
+            onChange={updateTitle}
+            placeholder="Write a new task..."
+            type="text"
+            value={title}
+          />
+          <AddFormInput
+            onChange={updateTitle}
+            placeholder="Which list..."
+            type="text"
+            value={list}
+          />
+        </InputContainer>
         <AddNewButton type="submit">✓</AddNewButton>
         <DeleteTodoButton type="button" onClick={handleDeleteClick}>
           X

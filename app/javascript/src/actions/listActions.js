@@ -45,6 +45,5 @@ export const editList = (list) => (dispatch) => {
 
 export const fetchLists = () => (dispatch) =>
   ListApiUtil.fetchLists().then((fetchedLists) => {
-    console.log('fetched lists:', fetchedLists);
     dispatch(receiveLists(fetchedLists));
   });

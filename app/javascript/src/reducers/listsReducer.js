@@ -5,12 +5,6 @@ import {
   UPDATE_LIST,
 } from '../actions/listActions';
 
-import {
-  RECEIVE_TODO,
-  RECEIVE_TODOS,
-  REMOVE_TODO,
-} from '../actions/todoActions';
-
 const defaultState = {};
 
 const listsReducer = (state = defaultState, action) => {
@@ -22,17 +16,20 @@ const listsReducer = (state = defaultState, action) => {
       nextState[action.list.id] = action.list;
       return nextState;
     }
+
     case RECEIVE_LISTS: {
       const { lists } = action;
-      // console.log(action);
+      const listsToReturn = {};
 
-      return lists.reduce(
-        (accumulator, list) => {
-          accumulator[list.id] = list;
-          return accumulator;
-        },
-        { ...state }
-      );
+      lists.forEach((list) => {
+        listsToReturn[list.id] = {
+          title: list.title,
+          id: list.id,
+          todoIds: list.todos.map((todo) => todo.id),
+        };
+      });
+
+      return listsToReturn;
     }
 
     case REMOVE_LIST: {
@@ -46,45 +43,48 @@ const listsReducer = (state = defaultState, action) => {
       return nextState;
     }
 
-    case RECEIVE_TODOS: {
-      const { todos } = action;
-      const { todoIds } = action.todos;
-      const { list_id } = action.todos[0].list_id;
-      console.log(action.todos[0].list_id);
+    // case RECEIVE_TODOS: {
+    //   const { todos } = action;
+    //   const { todoIds } = action.todos;
 
-      return {
-        ...state,
-      };
-    }
+    //   return {
+    //     ...state,
+    //     todos,
+    //     // [todoId]: {
+    //     //   ...todo,
+    //     //   todoIds: todos,
+    //     // },
+    //   };
+    // }
 
-    case RECEIVE_TODO: {
-      const { todo } = action;
-      const currentUserId = todo.user_id;
-      const currentUser = state[currentUserId];
-      const previousTodos = currentUser.todoIds;
+    // case RECEIVE_TODO: {
+    //   const { todo } = action;
+    //   const currentUserId = todo.user_id;
+    //   const currentUser = state[currentUserId];
+    //   const previousTodos = currentUser.todoIds;
 
-      return {
-        ...state,
-        [currentUserId]: {
-          ...currentUser,
-          todoIds: [...previousTodos, todo.id],
-        },
-      };
-    }
+    //   return {
+    //     ...state,
+    //     [currentUserId]: {
+    //       ...currentUser,
+    //       todoIds: [...previousTodos, todo.id],
+    //     },
+    //   };
+    // }
 
-    case REMOVE_TODO: {
-      const { todoId, userId } = action;
-      const currentUser = state[userId];
-      const previousTodos = currentUser.todoIds;
+    // case REMOVE_TODO: {
+    //   const { todoId, userId } = action;
+    //   const currentUser = state[userId];
+    //   const previousTodos = currentUser.todoIds;
 
-      return {
-        ...state,
-        [currentUserId]: {
-          ...currentUser,
-          todoIds: previousTodos.filter((id) => id !== todoId),
-        },
-      };
-    }
+    //   return {
+    //     ...state,
+    //     [currentUserId]: {
+    //       ...currentUser,
+    //       todoIds: previousTodos.filter((id) => id !== todoId),
+    //     },
+    //   };
+    // }
 
     default: {
       return state;
