@@ -42,8 +42,8 @@ const Ul = styled.ul`
   list-style: none;
 `;
 
-const TodoIndex = React.memo(({ numberOfTodos, todos }) => {
-  // console.log(todos);
+const TodoIndex = React.memo(({ numberOfTodos, todosArray }) => {
+  console.log(todosArray);
   return (
     <IndexContainer>
       <LinkMenu>
@@ -57,7 +57,7 @@ const TodoIndex = React.memo(({ numberOfTodos, todos }) => {
         </Right>
       </LinkMenu>
       <Ul>
-        {todos.map((todo) => (
+        {todosArray.map((todo) => (
           <TodoItem todo={todo} key={todo.id} />
         ))}
       </Ul>

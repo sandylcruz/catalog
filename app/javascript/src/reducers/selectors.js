@@ -39,7 +39,5 @@ export const selectUsersTodos = createSelector(
     }
 
     return todos;
-    // return todos.map((todo) => todo.id);
-    // return currentUser.todoIds.map((todoId) => todos[todoId]);
   }
 );

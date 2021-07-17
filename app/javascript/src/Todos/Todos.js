@@ -16,23 +16,20 @@ const TodosContainer = styled.div``;
 const Todos = React.memo(() => {
   const dispatch = useDispatch();
   const todos = useSelector(selectUsersTodos);
-  console.log(todos);
+  const todosArray = Object.values(todos);
 
   const processForm = useCallback(
     (todo) => dispatch(createTodo(todo)),
     [dispatch]
   );
 
-  // const numberOfTodos = todos.length;
+  const numberOfTodos = todos.length;
 
   return (
     <TodosContainer>
       <H1>Todos</H1>
       <TodoForm processForm={processForm} />
-      {/* {todos.forEach((todo) => {
-        <h1>todo.title</h1>;
-      })} */}
-      {/* <TodoIndex numberOfTodos={numberOfTodos} todos={todos} /> */}
+      <TodoIndex numberOfTodos={numberOfTodos} todosArray={todosArray} />
     </TodosContainer>
   );
 });
