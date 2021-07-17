@@ -43,6 +43,7 @@ const Ul = styled.ul`
 `;
 
 const TodoIndex = React.memo(({ numberOfTodos, todos }) => {
+  // console.log(todos);
   return (
     <IndexContainer>
       <LinkMenu>
