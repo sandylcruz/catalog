@@ -48,7 +48,6 @@ const SidebarContainer = styled.div`
 
 const Sidebar = () => {
   const lists = useSelector(selectUsersLists);
-  console.log(lists);
 
   return (
     <SidebarContainer>

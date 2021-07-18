@@ -43,7 +43,6 @@ const Ul = styled.ul`
 `;
 
 const TodoIndex = React.memo(({ numberOfTodos, todosArray }) => {
-  console.log(todosArray);
   return (
     <IndexContainer>
       <LinkMenu>

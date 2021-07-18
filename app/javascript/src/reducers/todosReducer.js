@@ -5,6 +5,13 @@ import {
   UPDATE_LIST,
 } from '../actions/listActions';
 
+import {
+  RECEIVE_TODO,
+  RECEIVE_TODOS,
+  REMOVE_TODO,
+  UPDATE_TODO,
+} from '../actions/todoActions';
+
 const defaultState = {};
 
 const todosReducer = (state = defaultState, action) => {
@@ -22,31 +29,31 @@ const todosReducer = (state = defaultState, action) => {
 
       return todos;
     }
-    // case RECEIVE_TODO: {
-    //   const nextState = { ...state };
-    //   nextState[action.todo.id] = action.todo;
+    case RECEIVE_TODO: {
+      const nextState = { ...state };
+      nextState[action.todo.id] = action.todo;
 
-    //   return nextState;
-    // }
+      return nextState;
+    }
 
-    // case RECEIVE_TODOS: {
-    //   const nextState = { ...state };
+    case RECEIVE_TODOS: {
+      const nextState = { ...state };
 
-    //   action.todos.forEach((todo) => {
-    //     nextState[todo.id] = todo;
-    //   });
-    //   return nextState;
-    // }
-    // case REMOVE_TODO: {
-    //   const nextState = { ...state };
-    //   delete nextState[action.id];
-    //   return nextState;
-    // }
+      action.todos.forEach((todo) => {
+        nextState[todo.id] = todo;
+      });
+      return nextState;
+    }
+    case REMOVE_TODO: {
+      const nextState = { ...state };
+      delete nextState[action.id];
+      return nextState;
+    }
 
-    // case UPDATE_TODO: {
-    //   const nextState = { ...state, [action.todo.id]: action.todo };
-    //   return nextState;
-    // }
+    case UPDATE_TODO: {
+      const nextState = { ...state, [action.todo.id]: action.todo };
+      return nextState;
+    }
     default: {
       return state;
     }
