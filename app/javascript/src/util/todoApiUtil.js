@@ -1,6 +1,6 @@
 import { ajax } from 'jquery';
 
-export const createTodo = (todo) =>
+export const createTodo = (todo, listId) =>
   new Promise((resolve, reject) => {
     ajax({
       type: 'POST',
@@ -9,7 +9,7 @@ export const createTodo = (todo) =>
         todo: {
           title: todo.title,
           done: todo.done,
-          listId: todo.listId,
+          listId,
         },
       },
       success: (newTodo) => {

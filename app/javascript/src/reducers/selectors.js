@@ -21,12 +21,20 @@ export const selectTodoById = createSelector(
 export const selectUsersLists = createSelector(
   selectCurrentUser,
   (state) => state.entities.lists,
-  (currentUser, lists) => {
+  (state) => state.entities.todos,
+  (currentUser, lists, todos) => {
     if (!currentUser) {
       return [];
     }
 
-    return currentUser.listIds.map((listId) => lists[listId]);
+    return currentUser.listIds.map((listId) => {
+      const list = lists[listId];
+      return {
+        title: list.title,
+        id: list.id,
+        todos: list.todoIds.map((todoId) => todos[todoId]),
+      };
+    });
   }
 );
 

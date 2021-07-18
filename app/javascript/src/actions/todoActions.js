@@ -5,9 +5,10 @@ export const RECEIVE_TODOS = 'RECEIVE_TODOS';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 
-export const receiveTodo = (todo) => ({
+export const receiveTodo = (todo, listId) => ({
   type: RECEIVE_TODO,
   todo,
+  listId,
 });
 
 export const receiveTodos = (todos) => ({
@@ -26,9 +27,9 @@ export const updateTodo = (todo) => ({
   todo,
 });
 
-export const createTodo = (todo) => (dispatch) =>
-  TodoApiUtil.createTodo(todo).then((newTodo) => {
-    dispatch(receiveTodo(newTodo));
+export const createTodo = (todo, listId) => (dispatch) =>
+  TodoApiUtil.createTodo(todo, listId).then((newTodo) => {
+    dispatch(receiveTodo(newTodo, listId));
   });
 
 export const deleteTodo = (todoId) => (dispatch, getState) => {

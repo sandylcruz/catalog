@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 import { createTodo } from '../actions/todoActions';
-import { selectUsersTodos } from '../reducers/selectors';
+import { selectUsersLists, selectUsersTodos } from '../reducers/selectors';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoIndex from '../TodoIndex/TodoIndex';
 
@@ -15,11 +15,13 @@ const TodosContainer = styled.div``;
 
 const Todos = React.memo(() => {
   const dispatch = useDispatch();
+  const lists = useSelector(selectUsersLists);
   const todos = useSelector(selectUsersTodos);
   const todosArray = Object.values(todos);
 
   const processForm = useCallback(
-    (todo) => dispatch(createTodo(todo)),
+    (todo, listId) => dispatch(createTodo(todo, listId)),
+
     [dispatch]
   );
 
@@ -29,7 +31,12 @@ const Todos = React.memo(() => {
     <TodosContainer>
       <H1>Todos</H1>
       <TodoForm processForm={processForm} />
-      <TodoIndex numberOfTodos={numberOfTodos} todosArray={todosArray} />
+      <TodoIndex
+        numberOfTodos={numberOfTodos}
+        processForm={processForm}
+        todosArray={todosArray}
+        lists={lists}
+      />
     </TodosContainer>
   );
 });

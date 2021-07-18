@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import TodoItem from '../TodoItem/TodoItem';
+import TodoForm from '../TodoForm/TodoForm';
 
 const H4 = styled.h4`
   font-size; 15px;
@@ -42,26 +43,41 @@ const Ul = styled.ul`
   list-style: none;
 `;
 
-const TodoIndex = React.memo(({ numberOfTodos, todosArray }) => {
+const TodoIndex = React.memo(({ lists, processForm }) => {
   return (
-    <IndexContainer>
-      <LinkMenu>
-        <Left>
-          <P>{numberOfTodos} tasks</P>
-        </Left>
-        <Right>
-          <H4>All</H4>
-          <H4>Active</H4>
-          <H4>Completed</H4>
-        </Right>
-      </LinkMenu>
-      <Ul>
-        {todosArray.map((todo) => (
-          <TodoItem todo={todo} key={todo.id} />
-        ))}
-      </Ul>
-    </IndexContainer>
+    <div>
+      {lists.map((list) => (
+        <div key={list.id}>
+          <TodoForm processForm={processForm} listId={list.id} />
+          <h1>{list.title}</h1>
+          <p>Number of todos: {list.todos.length}</p>
+          <ul>
+            {list.todos.map((todo) => (
+              <li key={todo.id}>{todo.title}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   );
+  // return (
+
+  // <IndexContainer>
+  //   <LinkMenu>
+  //     <Left>{/* <P>{numberOfTodos} tasks</P> */}</Left>
+  //     <Right>
+  //       <H4>All</H4>
+  //       <H4>Active</H4>
+  //       <H4>Completed</H4>
+  //     </Right>
+  //   </LinkMenu>
+  //   <Ul>
+  //     {todosArray.map((todo) => (
+  //       <TodoItem todo={todo} key={todo.id} />
+  //     ))}
+  //   </Ul>
+  // </IndexContainer>
+  // );
 });
 
 export default TodoIndex;

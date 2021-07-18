@@ -24,9 +24,9 @@ const StyledForm = styled.form`
   flex-direction: column;
 `;
 
-const TodoForm = ({ processForm }) => {
+const TodoForm = React.memo(({ listId, processForm }) => {
   const dispatch = useDispatch();
-  const [listId, setListId] = useState('');
+  // const [listId, setListId] = useState('');
   const [title, setTitle] = useState('');
 
   const handleDeleteClick = useCallback((event) => {
@@ -42,15 +42,15 @@ const TodoForm = ({ processForm }) => {
         title,
       };
 
-      processForm(todo);
+      processForm(todo, listId);
       setTitle('');
     },
-    [processForm, title]
+    [listId, processForm, title]
   );
 
-  const updateList = useCallback((event) => {
-    setList(event.currentTarget.value);
-  }, []);
+  // const updateList = useCallback((event) => {
+  //   setList(event.currentTarget.value);
+  // }, []);
 
   const updateTitle = useCallback((event) => {
     setTitle(event.currentTarget.value);
@@ -78,6 +78,6 @@ const TodoForm = ({ processForm }) => {
       </FormElements>
     </StyledForm>
   );
-};
+});
 
 export default TodoForm;

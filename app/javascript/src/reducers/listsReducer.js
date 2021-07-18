@@ -5,6 +5,13 @@ import {
   UPDATE_LIST,
 } from '../actions/listActions';
 
+import {
+  RECEIVE_TODO,
+  RECEIVE_TODOS,
+  REMOVE_TODO,
+  UPDATE_TODO,
+} from '../actions/todoActions';
+
 const defaultState = {};
 
 const listsReducer = (state = defaultState, action) => {
@@ -43,6 +50,18 @@ const listsReducer = (state = defaultState, action) => {
       return nextState;
     }
 
+    case RECEIVE_TODO: {
+      const { todo, listId } = action;
+
+      return {
+        ...state,
+        [listId]: {
+          ...state[listId],
+          todoIds: [...state[listId].todoIds, todo.id],
+        },
+      };
+    }
+
     // case RECEIVE_TODOS: {
     //   const { todos } = action;
     //   const { todoIds } = action.todos;
@@ -54,21 +73,6 @@ const listsReducer = (state = defaultState, action) => {
     //     //   ...todo,
     //     //   todoIds: todos,
     //     // },
-    //   };
-    // }
-
-    // case RECEIVE_TODO: {
-    //   const { todo } = action;
-    //   const currentUserId = todo.user_id;
-    //   const currentUser = state[currentUserId];
-    //   const previousTodos = currentUser.todoIds;
-
-    //   return {
-    //     ...state,
-    //     [currentUserId]: {
-    //       ...currentUser,
-    //       todoIds: [...previousTodos, todo.id],
-    //     },
     //   };
     // }
 
