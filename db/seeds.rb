@@ -12,8 +12,9 @@ User.create(username: 'calpal', password: 'password')
 User.create(username: 'stinky', password: 'password')
 User.create(username: 'squeakfreak', password: 'password')
 
-List.create(title: 'Cat Todos', user: User.first)
-List.create(title: 'My second list', user: User.first)
+List.create(title: 'Personal List', user: User.first)
+List.create(title: 'Work List', user: User.first)
+List.create(title: 'Grocery List', user: User.first)
 List.create(title: 'Today`s Todos', user: User.last)
 
 Todo.create(title: 'Give Callie a bath', done: false, list: List.first)

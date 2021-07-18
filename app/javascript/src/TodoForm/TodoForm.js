@@ -26,7 +26,7 @@ const StyledForm = styled.form`
 
 const TodoForm = ({ processForm }) => {
   const dispatch = useDispatch();
-  const [list, setList] = useState('');
+  const [listId, setListId] = useState('');
   const [title, setTitle] = useState('');
 
   const handleDeleteClick = useCallback((event) => {
@@ -40,13 +40,19 @@ const TodoForm = ({ processForm }) => {
 
       const todo = {
         title,
+        // listId,
       };
 
-      processForm(todo);
+      processForm(todo, listId);
       setTitle('');
+      // setList('');
     },
     [processForm, title]
   );
+
+  const updateList = useCallback((event) => {
+    setList(event.currentTarget.value);
+  }, []);
 
   const updateTitle = useCallback((event) => {
     setTitle(event.currentTarget.value);
@@ -67,10 +73,10 @@ const TodoForm = ({ processForm }) => {
             value={title}
           />
           <AddFormInput
-            onChange={updateTitle}
+            onChange={updateList}
             placeholder="Which list..."
             type="text"
-            value={list}
+            value={listId}
           />
         </InputContainer>
         <AddNewButton type="submit">✓</AddNewButton>
