@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
 import ListsContainer from '../Lists/ListsContainer';
+import { selectUsersLists } from '../reducers/selectors';
 
 const A = styled.a`
    font-size: 20px;
@@ -27,17 +29,27 @@ const A = styled.a`
 
 const H3 = styled.h3`
   font-size; 900px;
-  margin: 20px;
   padding: 10px;
+  margin: 20px;
+`;
+
+const Li = styled.li`
+  font-size: 20px;
+  list-style: none;
+  margin-left: 35px;
 `;
 
 const SidebarContainer = styled.div`
   background-color: #f5f7f7;
   width: 220px;
   height: 100vh;
+  padding: 10px;
 `;
 
 const Sidebar = () => {
+  const lists = useSelector(selectUsersLists);
+  console.log(lists);
+
   return (
     <SidebarContainer>
       <H3>
@@ -51,6 +63,10 @@ const Sidebar = () => {
           Lists
         </A>
       </H3>
+      {lists.map((list) => (
+        <Li key={list.id}>{list.title}</Li>
+      ))}
+
       <H3>
         {' '}
         <A href="/#/todos" aria-label="tags">

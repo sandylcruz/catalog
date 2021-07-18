@@ -40,12 +40,10 @@ const TodoForm = ({ processForm }) => {
 
       const todo = {
         title,
-        // listId,
       };
 
-      processForm(todo, listId);
+      processForm(todo);
       setTitle('');
-      // setList('');
     },
     [processForm, title]
   );
@@ -71,12 +69,6 @@ const TodoForm = ({ processForm }) => {
             placeholder="Write a new task..."
             type="text"
             value={title}
-          />
-          <AddFormInput
-            onChange={updateList}
-            placeholder="Which list..."
-            type="text"
-            value={listId}
           />
         </InputContainer>
         <AddNewButton type="submit">✓</AddNewButton>
