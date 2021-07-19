@@ -3,7 +3,8 @@
 module Api
   # This is the todos controller
   class TodosController < ApplicationController
-    before_action :ensure_logged_in
+    # before_action :ensure_logged_in
+    # skip_before_action :verify_authenticity_token
 
     def create
       @todo = Todo.new(todo_params.except(:done))

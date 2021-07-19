@@ -9,7 +9,7 @@ export const createTodo = (todo, listId) =>
         todo: {
           title: todo.title,
           done: todo.done,
-          listId,
+          list_id: listId,
         },
       },
       success: (newTodo) => {
