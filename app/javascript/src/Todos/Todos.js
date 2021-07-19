@@ -30,7 +30,7 @@ const Todos = React.memo(() => {
   return (
     <TodosContainer>
       <H1>Todos</H1>
-      <TodoForm processForm={processForm} />
+      {/* <TodoForm processForm={processForm} /> */}
       <TodoIndex
         numberOfTodos={numberOfTodos}
         processForm={processForm}

@@ -19,7 +19,7 @@ const InputContainer = styled.div`
 `;
 
 const StyledForm = styled.form`
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
 `;
